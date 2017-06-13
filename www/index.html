@@ -1,0 +1,215 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sys Futebol</title>
+    <meta charset="windows-1252">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     
+     <link rel="stylesheet" type="text/css" href="styles/style.css">
+
+</head>
+
+
+<body>
+
+
+    <div id="total">
+
+
+        <!--MENUS-->
+        <nav id="menus">
+            <ul>
+                <li><a href="#" onclick="loadConteudoHome();">Home</a></li>
+                <li><a href="#" onclick="loadConteudoJogador()">Jogadores</a>
+                <li><a href="#" onclick="loadConteudoClube()">Clubes</a></li>
+                <li><a href="#" onclick="loadConteudoLiga()">Liga</a></li>
+                <li><a href="#" onclick="loadConteudoTaca()">Taça</a></li>
+            </ul>
+            </li>
+        </nav>
+
+
+        <!-- CONTEUDO PRINPIPAL-->
+        <div id="conteudoPagina">
+
+            <!--CONTEUDO HOME-->
+            <div id="conteudoHome" style="display: none;">
+                <h1>welcome</h1>
+            </div>
+
+           
+           <!-- CONTEUDO JOGADOR -->
+            <div id="conteudoPaginaJogador" style="display: none;">
+                  <h2>Formulário Jogador</h2>
+                
+                 <!--FORMULARIO JOGADOR-->
+                <div style="float: left;">
+
+                    <form name="formJogador">
+                        <label for="nomeJogador">Nome</label>
+                        <input required type="text" id="nomeJogador" name="nomeJogador" placeholder="Digita o nome do jogador">
+
+                        <label for="data">Dt Nascimento</label>
+                        <input required type="text" id="data" name="data" placeholder="YYYY/MM/DD">
+
+                        <label for="paisJogador">Pais</label>
+                        <select id="paisJogador" name="paisJogador">
+                            <option selected="selected">Introduza pais</option>
+                        </select>
+
+                        <label for="altura">Altura (Cm)</label>
+                        <input required type="number" id="altura" name="altura" placeholder="Digita a altura do jogador">
+
+                        <label for="posicao">Posição</label>
+                        <select id="posicao" name="posicao">
+                             <option selected="selected">Introduza posicao</option>
+                        </select>
+
+                        <button type="submit" id="btnGravarJogador" onclick="adicionarJogador()">GRAVAR</button>
+                    </form>
+
+                    <!-- ERRO JOGADOR -->
+                    <div id="divErrosCriacaoJogador" style="float: left; display: none; color: red; font-weight: bold;"></div>
+                </div>
+
+                
+
+
+                <!--TABELA JOGADORES-->
+                <div id="divTabelaJogadores" style="float: left; display: none;">                      
+                    <table id="tabelaJogadores" border="1"></table>
+                </div>
+
+
+                <!-- ERRO JOGADOR -->
+                <div id="divNaoExistemJogadores" style="float: left; display: none; color: red; font-weight: bold;">
+                    Lista de jogadores vazia. Adiciona um jogador!
+                </div>
+
+
+            </div>
+
+
+            <!--CONTEUDO Clube-->
+            <div id="conteudoPaginaClube" style="display: none;">
+                <h2>Formulário Clube</h2>
+
+                
+                 <!--FORMULARIO Clube-->
+                <div style="float: left;">
+
+                    <form name="formClube">
+                        <label for="nomeClube">Nome</label>
+                        <input required type="text" id="nomeClube" name="nomeClube" placeholder="Introduza o nome do Clube">
+
+                        <label for="acr">Acronimo</label>
+                        <input required type="text" id="acr" name="acr" placeholder="Introduza o acronimo">
+                        
+                        <label for="paisClube">Pais</label>
+                        <select id="paisClube" name="paisClube">
+                            <option selected="selected">Introduza pais</option>
+                        </select>
+
+                        <label for="url">Url</label>
+                        <input required type="text" id="url" name="url" placeholder="http://...">
+
+                        <label for="descricao">Descrição</label>
+                        <input id="descricao" name="descricao">
+
+                        <button type="submit" id="btnGravarClube" onclick="adicionarClube();">GRAVAR</button>
+                    </form>
+
+                    
+                    <!-- ERRO Clube -->
+                    <div id="divErrosCriacaoClube" style="float: left; display: none; color: red; font-weight: bold;"></div>
+                </div>
+
+                
+                <!--TABELA Clube-->
+                <div id="divTabelaClubes" style="float: left; display: none;">                      
+                    <table id="tabelaClubes" border="1"></table>
+                </div>
+
+
+                <!-- ERRO Clube -->
+                <div id="divNaoExistemClubes" style="float: left; display: none; color: red; font-weight: bold;">
+                    Lista de Clubes vazia. Adiciona um Clube!
+                </div>
+
+
+                <hr>
+
+                 <!--CONTEUDO ADD JOGADOR AO Clube-->
+                
+                  <div id="divJogadorClube" style="float: left; display: none;">
+                    <h2>Adicionar Jogadores</h2>
+
+                    <!--TABELA MERCADO DE JOGADORES LIVRES-->
+                    <div id="divTabelaMercadoJogadores" style="float: right;">                      
+                        <table id="tabelaMercadoJogadores" border="1"></table>                                            
+                    </div>        
+              
+                     <!--<label for="cbListaJogadores">Mercado de Jogadores</label>
+                        <select id="cbListaJogadores" name="cbListaJogadores">
+                            <option selected="selected">Escolha Jogador</option>
+                        </select>
+                    
+                      <!--  <button type="submit" id="btnAddJogadorClube" onclick="adicionarJogadorClube();" style="display: block;">Add&rarr;</button>
+                        <button type="submit" id="btnRemoveJogadorClube" onclick="removerJogadorClube();" style="display: block;">&larr;Remove</button>
+                                      
+                   <!--TABELA DE JOGADORES POR Clube-->
+                    <div id="divTabelaJogadoresPorClube" style="float: right;">                      
+                        <table id="tabelaJogadoresPorClube" border="1"></table>
+
+                         <!-- ERRO JOGADOR/Clube -->
+                        <div id="divErrosJogadorClube" style="float: left; display: none; color: red; font-weight: bold;">
+                            Clube sem jogadores!
+                        </div>
+                                
+                    </div>                                            
+                  </div>                           
+
+            </div>
+       
+
+
+            
+            <!--CONTEUDO LIGA-->
+            <div id="conteudoPaginaLiga" style="display: none;">
+                <h1>Liga</h1>
+            </div>
+
+
+            
+            <!--CONTEUDO TACA-->
+            <div id="conteudoPaginaTaca" style="display: none;">
+                <h1>Taca</h1>
+            </div>
+         </div>
+	
+    </div>
+
+
+
+    <!--Rodapé da pagina-->
+	<footer class="mainFooter">
+
+		<address> 
+			Copyright &copy; Artur Ferreira, Filipe Montijo - Programacao para a Internet 2017
+			<a href="mailto:arturjsf@outlook.pt" title="mail to:" target="_blank">arturjsf@outlook.pt</a>
+            <a href="mailto:filipe-montijo@outlook.pt" title="mail to:" target="_blank">filipe-montijo@outlook.pt</a>
+		</address>
+	</footer>
+
+ 
+      <script type="text/javascript" src="scripts/script.js"></script>
+      <script type="text/javascript">gerarDropDownPaisesJogador()</script>
+      <script type="text/javascript">gerarDropDownPaisesClube()</script>
+      <script type="text/javascript">gerarDropDownPosicao()</script>
+ <!--     <script type="text/javascript">gerarDropDownMercadoJogadoresLivres()</script>-->
+
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+.formJogador{margin-top: 200px; margin-left: 50px}
+.formJogador input{display: inline; margin-bottom: 10px}
+tr{transition:all .25s ease-in-out}
+
+tr:hover{background-color:#EEE;}
+
+img{ cursor: pointer;}
+
+
+ul{
+    margin:0px; padding: 0px;
+}
+
+ul li a{
+
+    text-decoration: none;
+    color:white;
+}
+
+ul li{
+    float:left;
+    width: 150px;
+    height: 40px;
+    background-color: black;
+    font-size: 20px;
+    line-height: 40px;
+    text-align: center;
+    display: block;
+    opacity:.6;
+    border: 2px solid #285189;
+}
+
+ul li a:hover{
+    background-color:orange;
+}
+ul li ul li{
+    display: none;
+}
+
+ul li:hover ul li{
+    display: block;
+}
+
+
+#total {
+    margin: 0px auto;
+    border: 5px solid #000;
+    height: 98%;
+    width: 88%;
+    display: table;
+}
+
+
+#menu {
+    float: left;
+    height: auto;
+    width: auto;
+    display: table;
+}
+
+#conteudoPagina {
+    float: left;
+    height: auto;
+    width: 80%;
+    background-color: #fff;
+    margin: 1%;
+}
+
+#conteudoPaginaEquipa{
+    float: left;
+    background-color: #e7e7e7;
+    height: auto;
+    width: 100%;
+}
+
+
+#divJogadorEquipa{
+    float: left;
+    margin-top: 50px;
+    background-color: #999;
+    height: auto;
+    width: 100%;
+}
+
+
+html, body {
+    margin: 0px;
+    padding: 0px;
+    background-image: url("/images/futebol.jpg");
+    background-size: cover;
+    font-family: Arial, Helvetica, Sans-Serif;
+    height: 100%;
+    width: 100%;
+}
+
+
+
+
+

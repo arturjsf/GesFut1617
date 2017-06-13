@@ -1,0 +1,13 @@
+{
+    "version": "0.1.0",
+    "command": "explorer",
+    "windows": {
+        "command": "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe"
+    },
+    "osx": {
+        "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+    },
+    "args": [
+        "http://localhost:8082/"
+    ]
+}
