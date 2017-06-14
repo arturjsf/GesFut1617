@@ -57,7 +57,7 @@ function Jogador(nomeJogador, data, paisJogador, altura, posicao) {
  */
 function Clube(nomeClube, acr, paisClube, url, descricao) {
     this.idClube = contadorClube++;
-    this.nomeClube = nomeClube ? nomeJogador.toString() : "";
+    this.nomeClube = nomeClube ? nomeClube.toString() : "";
     this.acr = acr;
     this.paisClube = paisClube;
     this.url = url;
