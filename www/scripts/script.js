@@ -25,10 +25,10 @@ var Paises = ["Portugal","Espanha","Argentina","Alemanha","França","Brasil","It
  * @param {*} altura 
  */
 
-//this.nome = nome ? nome.toString() : ""; //no exemplo actual o toString era desnecessário pois o argumento vem de uma string. Mas assim fica robusta em relação a outras chamadas
+
 function Jogador(nomeJogador, data, paisJogador, altura, posicao) {
     this.idJogador = contadorJogador++;
-    this.nomeJogador = nomeJogador ? nomeJogador.toString() : "";
+    this.nomeJogador = nomeJogador ? nomeJogador.toString() : ""; //o toString era desnecessário pois o argumento vem de uma string. Mas assim fica robusta em relação a outras chamadas
     this.data = data;
     this.paisJogador = paisJogador;  
     this.altura = altura;
@@ -57,7 +57,7 @@ function Jogador(nomeJogador, data, paisJogador, altura, posicao) {
  */
 function Clube(nomeClube, acr, paisClube, url, descricao) {
     this.idClube = contadorClube++;
-    this.nomeClube = nomeClube;
+    this.nomeClube = nomeClube ? nomeJogador.toString() : "";
     this.acr = acr;
     this.paisClube = paisClube;
     this.url = url;
