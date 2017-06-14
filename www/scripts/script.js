@@ -9,6 +9,7 @@ var contadorClube = 1;
 //ARRAYS
 var arrayJogadores = new Array();
 var arrayClubes = new Array();
+var arrayTaca = new Array();
 
 //ARRAYS DE ELEMENTOS 
 var PosicaoJogador = ["GR", "DF", "MC","AV"];
@@ -543,7 +544,7 @@ function criarTabelaClubes() {
         //celulaNome.style.border = "1px solid black";
         linha.appendChild(celulaEDIT);
 
-         var celulaREMOVE = document.createElement("td");
+        var celulaREMOVE = document.createElement("td");
         var imgREMOVEClube = document.createElement('img');
         imgREMOVEClube.setAttribute('id', linha.id);
         imgREMOVEClube.setAttribute('src', 'images/delete.png'); 
@@ -610,7 +611,7 @@ function editarClube(indice) {
 
 
 /**
- * Se nao existir numa Competicao, Apaga do arrayClube e mete os inputs a null
+ * Se nao existir numa Taca, Apaga do arrayClube e mete os inputs a null
  */
 function removerClube(indice) {
 
@@ -620,22 +621,22 @@ function removerClube(indice) {
     var confirmacao = confirm("Deseja apagar a Clube?");
     
     if(confirmacao == true){
-     if (existeJogadorEmCompeticao() || arrayJogadoresClube.length > 0) {
+     if (existeClubeEmTaca() || arrayClubes[indice].Equipa.length > 0) {
         divErrosCriacaoClube.style.display = 'block';
 
         var textoErro;
 
-        if (!existeJogadorEmCompeticao()){
-            textoErro = document.createTextNode("A Clube já existe numa Competicao!");
+        if (!existeClubeEmTaca()){
+            textoErro = document.createTextNode("O Clube já existe numa Taça!");
         }else{
-            textoErro = document.createTextNode("A Clube tem jogadores associados!");
+            textoErro = document.createTextNode("O Clube tem jogadores associados!");
         }
 
         var oldErro = divErrosCriacaoClube.firstChild;
         if (oldErro == null) {
             divErrosCriacaoClube.appendChild(textoErro);
         } else {
-            divErrosCriacaoClube.replaceChild(textoErro, oldErro);
+            divErrosCriacaoClube.replaceChild(textoErro, oldErro);  
         }
 
     } else {
@@ -698,16 +699,18 @@ function criarTabelaMercadoJogadores(indiceEquipa){
  * Adiciona o jogador á equipa e chama o criarTabelaEquipa para redesenhar a tabela com o novo jogador adicionado
  * @param {*} indice 
  */
-function atribuirJogador(indiceJogador, indiceEquipa){
+function atribuirJogador(){
+
+
+          var comboBoxMercadoJogadores = document.getElementById("cbListaJogadores");
+          var jogador = comboBoxMercadoJogadores.options[comboBoxMercadoJogadores.selectedIndex].text;
 
        //introduz na tabela jogadores por Clube
-        arrayClubes[indiceEquipa].Equipa.push(".......");
+        arrayClubes[indiceEquipa].Equipa.push(jogador);
 
         
-
         //e mete a disponibilidade do jogador a false
         arrayClubes[indiceEquipa].Equipa[indiceJogador].jogador.disponivel = false;
-
 
         criarTabelaEquipa(indiceEquipa);
 
@@ -820,9 +823,15 @@ function criarTabelaEquipa(indice){
         //celulaNome.style.border = "1px solid black";
         linha.appendChild(celulaPosicao);
 
-        //cada linha vai ter a propriedade onclick para podermos desatribuir o jogador da Clube
-        linha.id = i + "jogador";
-        linha.onclick = function () { desatribuirJogador(this.id.charAt(0)) };
+        var celulaDesatribuir = document.createElement("td");
+        var imgDesatribuirJogador = document.createElement('img');
+        imgDesatribuirJogador.setAttribute('id', linha.id);
+        imgDesatribuirJogador.setAttribute('src', 'images/remove.png'); 
+        imgDesatribuirJogador.onclick = function () { desatribuirJogador(this.id.charAt(0)) };
+        celulaDesatribuir.appendChild(imgDesatribuirJogador);
+        //celulaNome.style.border = "1px solid black";
+        linha.appendChild(celulaDesatribuir);
+
         tabelaNova.appendChild(linha);
     }
 
@@ -1098,14 +1107,14 @@ function existeJogadorEmClube() {
 
 
 /**
- * Metodo Aux chamado pelo removerClube. Verifica se um Clube existe nalguma competicao
+ * Metodo Aux chamado pelo removerClube. Verifica se um Clube existe nalguma Taça
  */
-function existeJogadorEmCompeticao() {
+function existeClubeEmTaca() {
     if (clubeSelecionado == -1) {
         return false;
     } else {
-        for (var i = 0; i < arrayCompeticao.length; i++) {
-            if (arrayCompeticao[i].Clube == clubeSelecionado) {
+        for (var i = 0; i < arrayTaca.length; i++) {
+            if (arrayTaca[i].Clube == clubeSelecionado) {
                 return true;
             }
         }
