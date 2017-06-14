@@ -1,5 +1,5 @@
 ///VARIAVEIS DE CONTROLO
-var clubeSelecionado = -1;
+var clubeSelecionado = -1; //-1 se é um clube novo
 var jogadorSeleccionado = -1; //-1 é um jogador novo
 
 //CONTADORES
@@ -9,9 +9,6 @@ var contadorClube = 1;
 //ARRAYS
 var arrayJogadores = new Array();
 var arrayClubes = new Array();
-var arrayJogadoresClube = new Array();
-
-var arrayCompeticao = new Array();
 
 //ARRAYS DE ELEMENTOS 
 var PosicaoJogador = ["GR", "DF", "MC","AV"];
@@ -48,7 +45,7 @@ function Jogador(nomeJogador, data, paisJogador, altura, posicao) {
 }
 
 /**
- *    CONSTRUTOR Clube
+ *    CONSTRUTOR CLUBE. contem um array Equipa com os jogadores
  * @param {*} nomeClube 
  * @param {*} acr 
  * @param {*} paisClube 
@@ -62,7 +59,7 @@ function Clube(nomeClube, acr, paisClube, url, descricao) {
     this.paisClube = paisClube;
     this.url = url;
     this.descricao = descricao;
-    this.plantel = new Array(Jogador); 
+    this.Equipa = new Array(Jogador);
     this.valido = verificar11Clube();
 
     if (Clube._inicializado == undefined) {
@@ -288,7 +285,7 @@ function criarTabelaJogadores() {
     document.getElementById("divTabelaJogadores").style.display = 'block';
 
     //cada vez que um jogador e criado e necessario atualizar a combobox do mercado
-    //gerarDropDownMercadoJogadoresLivres();
+    gerarDropDownMercadoJogadoresLivres();
       }  
 }
 
@@ -320,7 +317,7 @@ function editarJogador(indice) {
     document.getElementById("posicao").value = arrayJogadores[indice].posicao;
 
      //atualizacao da combobox de mercado
-    //gerarDropDownMercadoJogadoresLivres();
+    gerarDropDownMercadoJogadoresLivres();
 }
 
 
@@ -362,7 +359,7 @@ function removerJogador(indice) {
        // gerarDropDownPosicao();
 
         //atualizacao da combobox de mercado
-         //gerarDropDownMercadoJogadoresLivres();
+         gerarDropDownMercadoJogadoresLivres();
 
         
     }
@@ -372,7 +369,7 @@ function removerJogador(indice) {
 }
 
 
-/** --------------------------------------------------F U N C O E S    E Q U I P A ---------------------------------------------------------
+/** --------------------------------------------------F U N C O E S    C L U B E ---------------------------------------------------------
  */ 
 
 
@@ -476,9 +473,9 @@ function criarTabelaClubes() {
     var textoCabecalhoREMOVE = document.createTextNode(" ");
     celulaCabecalhoREMOVE.appendChild(textoCabecalhoREMOVE);
   
-    var celulaCabecalhoADD = document.createElement("th");
+  /*  var celulaCabecalhoADD = document.createElement("th");
     var textoCabecalhoADD = document.createTextNode("Adicionar jogador");
-    celulaCabecalhoADD.appendChild(textoCabecalhoADD);
+    celulaCabecalhoADD.appendChild(textoCabecalhoADD);*/
 
     var celulaCabecalhoValido = document.createElement("th");
     var textoCabecalhoValido = document.createTextNode("Completa");
@@ -494,7 +491,7 @@ function criarTabelaClubes() {
     linhaCabecalho.appendChild(celulaCabecalhoWWW);
     linhaCabecalho.appendChild(celulaCabecalhoEDIT);
     linhaCabecalho.appendChild(celulaCabecalhoREMOVE);    
-    linhaCabecalho.appendChild(celulaCabecalhoADD);
+  //  linhaCabecalho.appendChild(celulaCabecalhoADD);
     linhaCabecalho.appendChild(celulaCabecalhoValido);
 
     
@@ -547,22 +544,22 @@ function criarTabelaClubes() {
         linha.appendChild(celulaEDIT);
 
          var celulaREMOVE = document.createElement("td");
-        var imgREMOVEJogador = document.createElement('img');
-        imgREMOVEJogador.setAttribute('id', linha.id);
-        imgREMOVEJogador.setAttribute('src', 'images/delete.png'); 
-        imgREMOVEJogador.onclick = function () { removerClube(this.id) };
-        celulaREMOVE.appendChild(imgREMOVEJogador);
+        var imgREMOVEClube = document.createElement('img');
+        imgREMOVEClube.setAttribute('id', linha.id);
+        imgREMOVEClube.setAttribute('src', 'images/delete.png'); 
+        imgREMOVEClube.onclick = function () { removerClube(this.id) };
+        celulaREMOVE.appendChild(imgREMOVEClube);
         //celulaNome.style.border = "1px solid black";
         linha.appendChild(celulaREMOVE);
         
-        var celulaADD = document.createElement("td");
+      /*  var celulaADD = document.createElement("td");
         var imgADDJogador = document.createElement('img');
         imgADDJogador.setAttribute('id', linha.id);
         imgADDJogador.setAttribute('src', 'images/add.png');
-        imgADDJogador.onclick = function () { criarTabelaJogadoresPorClube(this.id) };
+        imgADDJogador.onclick = function () { gerarDIVAdicionarJogador(this.id) };
         celulaADD.appendChild(imgADDJogador);
         //celulaNome.style.border = "1px solid black";
-        linha.appendChild(celulaADD);
+        linha.appendChild(celulaADD);*/
 
         var celulaValido = document.createElement("td");
         var valido = document.createTextNode(arrayClubes[i].valido);
@@ -573,8 +570,9 @@ function criarTabelaClubes() {
 
 
 
-        //cada linha vai ter a propriedade onclick para podermos editar
-        
+        //cada linha vai ter a propriedade onclick
+        linha.id = i + "equipa";
+        linha.onclick = function () { gerarDIVAdicionarJogador(this.id.charAt(0)) };
         tabelaNova.appendChild(linha);
     }
 
@@ -584,10 +582,10 @@ function criarTabelaClubes() {
     //faz a substituicao das tabelas
     document.getElementById("divTabelaClubes").replaceChild(tabelaNova, oldTabela);
     document.getElementById("divTabelaClubes").style.display = 'block';  
-    document.getElementById("divJogadorClube").style.display = 'block';
+    document.getElementById("divEquipa").style.display = 'block';
 
      //atualizacao da combobox de mercado
-    //gerarDropDownMercadoJogadoresLivres();
+    gerarDropDownMercadoJogadoresLivres();
     }
     
 }
@@ -646,7 +644,7 @@ function removerClube(indice) {
         criarTabelaClubes();
         loadConteudoClube();
        // gerarDropDownPaisesClube();
-        //gerarDropDownMercadoJogadoresLivres();
+        gerarDropDownMercadoJogadoresLivres();
         
 
     // clear input text
@@ -662,35 +660,57 @@ function removerClube(indice) {
 }
 
 
-/** --------------------------------------------F U N C O E S   J O G A D O R / E Q U I P A ---------------------------------------------------------
+/** --------------------------------------------F U N C O E S    E Q U I P A ---------------------------------------------------------
  */ 
 
 
 
 /**
- * Adiciona o jogador selecionado na combobox ao array de jogadoresPorClube.
+ * Adiciona o jogador selecionado na combobox ao array Equipa do Clube
  * Mete a disponibilidade desse jogador a false
  */
-function adicionarJogadorClube() {
+function gerarDIVAdicionarJogador(indiceEquipa) {
 
     console.log("ENTROU NO ADD J/E");
 
+         loadConteudoEquipa(indiceEquipa);
 
-        //vai buscar o jogador selecionado á comboBox
-        var jogador = document.getElementById("cbListaJogadores").selectedIndex;
+         //criarTabelaMercadoJogadores();
 
-        //introduz na tabela jogadores por Clube
-        arrayJogadoresClube.push(clubeSelecionado, jogador);
+         //criarTabelaEquipa(indiceEquipa);
+
+    
+}
+
+
+function criarTabelaMercadoJogadores(indiceEquipa){
+
+    //se tiver jogadores 
+    if(arrayJogadores.length > 0){
+
+    //criamos uma tabela nova que será substituida pela antiga que está no HTML
+    var tabelaNova = document.createElement("table");
+    tabelaNova.id = "tabelaClubes";
+    }
+}
+
+/**
+ * Adiciona o jogador á equipa e chama o criarTabelaEquipa para redesenhar a tabela com o novo jogador adicionado
+ * @param {*} indice 
+ */
+function atribuirJogador(indiceJogador, indiceEquipa){
+
+       //introduz na tabela jogadores por Clube
+        arrayClubes[indiceEquipa].Equipa.push(".......");
+
+        
 
         //e mete a disponibilidade do jogador a false
-        arrayJogadores[jogador.idJogador].disponivel = false;
-        
-        //cria a tabela com osjogadores da Clube atualizados
-        criarTabelaJogadoresPorClube();
+        arrayClubes[indiceEquipa].Equipa[indiceJogador].jogador.disponivel = false;
 
-        //e atualiza a comboBox de jogadores livres
-        //gerarDropDownMercadoJogadoresLivres();
-    
+
+        criarTabelaEquipa(indiceEquipa);
+
 }
 
 /*
@@ -727,17 +747,17 @@ function adicionarJogadorClube() {
 }
 */
 
-function criarTabelaJogadoresPorClube(indice){
+function criarTabelaEquipa(indice){
 
-    clubeSelecionado = indice;
+    //clubeSelecionado = indice;
 
     //tabela nova que vai ser substituida pela antiga que esta no html
     var tabelaNova = document.createElement("table");
-    tabelaNova.id = "tabelaJogadoresPorClube";
+    tabelaNova.id = "tabelaEquipa";
 
     //cabecalho tabela
     var caption = tabelaNova.createCaption();
-    var titulo = document.createTextNode("Lista Jogadores: "+arrayClubes[indice].nomeClube);
+    var titulo = document.createTextNode("Lista Jogadores");
     caption.appendChild(titulo);
     tabelaNova.appendChild(caption);
 
@@ -771,12 +791,12 @@ function criarTabelaJogadoresPorClube(indice){
 
 
     //Enquanto houverem jogadores na tabela arrayJogadoresClube...
-    for (var i = 0; i < arrayJogadoresClube.length; i++) {
+    for (var i = 0; i < arrayClubes[indice].Equipa.length; i++) {
 
         var linha = document.createElement("tr");
 
         var celulaID = document.createElement("td");
-        var id = document.createTextNode(arrayJogadoresClube[i].jogador.idJogador);
+        var id = document.createTextNode(arrayJ);
         celulaID.appendChild(id);
         //celulaNome.style.border = "1px solid black";
         linha.appendChild(celulaID);
@@ -802,7 +822,7 @@ function criarTabelaJogadoresPorClube(indice){
 
         //cada linha vai ter a propriedade onclick para podermos desatribuir o jogador da Clube
         linha.id = i + "jogador";
-        linha.onclick = function () { desatribuirJogadorClube(this.id.charAt(0)) };
+        linha.onclick = function () { desatribuirJogador(this.id.charAt(0)) };
         tabelaNova.appendChild(linha);
     }
 
@@ -814,16 +834,17 @@ function criarTabelaJogadoresPorClube(indice){
     document.getElementById("tabelaJogadoresPorClube").style.display = 'block';
 
      //atualizar a combobox do mercado
-    //gerarDropDownMercadoJogadoresLivres();
+    gerarDropDownMercadoJogadoresLivres();
 }
 
 /**
- * Basicamente remove da tabela 
+ * Basicamente remove da tabelaEquipa e volta a colocar o jogador disponivel 
  * @param {*} indice 
  */
-function desatribuirJogadorClube(indice){
+function desatribuirJogador(indice){
 
 }
+
 
 /** --------------------------------------------------L O A D    D A S    P A G I N A S ---------------------------------------------------------
  */ 
@@ -885,15 +906,39 @@ function loadConteudoClube() {
     if(arrayClubes.length == 0){
         document.getElementById("divTabelaClubes").style.display = 'none'; // nao seria none?;
         document.getElementById("divNaoExistemClubes").style.display = 'block';
-        document.getElementById("divJogadorClube").style.display = 'none';
+        //document.getElementById("divEquipa").style.display = 'none';
 
         
     }else{
          document.getElementById("divTabelaClubes").style.display = 'block';  
          document.getElementById("divNaoExistemClubes").style.display = 'none';
-         document.getElementById("divJogadorClube").style.display = 'block';
+         //document.getElementById("divEquipa").style.display = 'block';
     }
 }
+
+
+
+
+/**
+ * Faz o load do conteudo da div Adicionar jogadores á Equipa. 
+ * São 2 tabelas. Uma com os jogadores livres e outra com a equipa a serem adicionados
+ * 
+ */
+function loadConteudoEquipa(indice) {
+ 
+    document.getElementById("divEquipa").style.display = 'block';
+    
+    if(arrayClubes[indice].Equipa.length == 0){
+        document.getElementById("divMercadoJogadores").style.display = 'none'; // nao seria none?;
+        document.getElementById("divErrosEquipa").style.display = 'block';
+
+        
+    }else{
+         document.getElementById("divMercadoJogadores").style.display = 'block';  
+         document.getElementById("divErrosEquipa").style.display = 'none';
+    }
+}
+
 
 
 
@@ -1112,7 +1157,7 @@ function gerarDropDownPosicao() {
 
 /**
  * gera a combobox de jogadores livres
- *//*
+ */
 function gerarDropDownMercadoJogadoresLivres() {
 
     console.log("entrou no mercado");
@@ -1137,7 +1182,6 @@ function gerarDropDownMercadoJogadoresLivres() {
  *  Recebe uma data e calcula a idade
  * @param {*} dateString 
  */
-
 function getAge(dateString){
     var today = new Date();
     var birthDate = new Date(dateString);

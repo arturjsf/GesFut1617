@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Sys Futebol</title>
+    <title>GesFut</title>
     <meta charset="windows-1252">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -139,34 +139,40 @@
 
                 <hr>
 
-                 <!--CONTEUDO ADD JOGADOR AO Clube-->
+                 <!--CONTEUDO ADD JOGADOR AO CLUBE-->
                 
-                  <div id="divJogadorClube" style="float: left; display: none;">
-                    <h2>Adicionar Jogadores</h2>
+                  <div id="divEquipa" style="float: left; display: none;">
+                    <h2>Adicionar jogadores</h2>
 
                     <!--TABELA MERCADO DE JOGADORES LIVRES-->
-                    <div id="divTabelaMercadoJogadores" style="float: right;">                      
+                  <!--  <div id="divTabelaMercadoJogadores" style="float: right;">                      
                         <table id="tabelaMercadoJogadores" border="1"></table>                                            
-                    </div>        
-              
-                     <!--<label for="cbListaJogadores">Mercado de Jogadores</label>
+                    </div>        -->
+
+
+                  <div id="divMercadoJogadores" style="float: left; display: none;">
+
+                     <label for="cbListaJogadores">Mercado de Jogadores</label>
                         <select id="cbListaJogadores" name="cbListaJogadores">
                             <option selected="selected">Escolha Jogador</option>
                         </select>
                     
-                      <!--  <button type="submit" id="btnAddJogadorClube" onclick="adicionarJogadorClube();" style="display: block;">Add&rarr;</button>
-                        <button type="submit" id="btnRemoveJogadorClube" onclick="removerJogadorClube();" style="display: block;">&larr;Remove</button>
-                                      
-                   <!--TABELA DE JOGADORES POR Clube-->
-                    <div id="divTabelaJogadoresPorClube" style="float: right;">                      
-                        <table id="tabelaJogadoresPorClube" border="1"></table>
+                        <button type="submit" id="btnAddJogadorClube" onclick="adicionarJogadorClube();" style="display: block;">Add&rarr;</button>
+                       <!-- <button type="submit" id="btnRemoveJogadorClube" onclick="removerJogadorClube();" style="display: block;">&larr;Remove</button>-->
+                    </div>   
 
+
+                   <!--TABELA DE JOGADORES POR Clube-->
+                    <div id="divTabelaEquipa" style="float: right; display: none;">
+                       <h2>Equipa</h2>        
+                        <table id="tabelaEquipa" border="1"></table>
+                     </div>    
                          <!-- ERRO JOGADOR/Clube -->
-                        <div id="divErrosJogadorClube" style="float: left; display: none; color: red; font-weight: bold;">
-                            Clube sem jogadores!
+                        <div id="divErrosEquipa" style="float: left; display: none; color: red; font-weight: bold;">
+                            Equipa sem jogadores!
                         </div>
                                 
-                    </div>                                            
+                                                            
                   </div>                           
 
             </div>
@@ -206,7 +212,7 @@
       <script type="text/javascript">gerarDropDownPaisesJogador()</script>
       <script type="text/javascript">gerarDropDownPaisesClube()</script>
       <script type="text/javascript">gerarDropDownPosicao()</script>
- <!--     <script type="text/javascript">gerarDropDownMercadoJogadoresLivres()</script>-->
+      <script type="text/javascript">gerarDropDownMercadoJogadoresLivres()</script>
 
 </body>
 
