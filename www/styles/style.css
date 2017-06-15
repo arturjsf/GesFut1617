@@ -12,7 +12,7 @@ html, body {
     margin: 0 auto;
     border: 5px solid #000;
     width: calc(90% - 10px); 
-    height: calc(100% - 10px);
+    height: calc(97% - 10px);
     display: table;
 }
 
@@ -23,6 +23,14 @@ html, body {
     width: auto;
     display: table;
     
+}
+
+h1{
+    text-align: center;
+}
+
+h2{
+    text-align: center;
 }
 
 ul #menu{
@@ -64,6 +72,16 @@ ul li:hover ul li{
 }
 
 
+footer
+{
+clear: both;
+text-align: right;
+color: #FFF;
+font-size: 0.8em;
+padding: 15px 5px;
+height: calc(5% - 35px); 
+
+}
 
 
 
@@ -71,7 +89,7 @@ ul li:hover ul li{
 .formJogador input{display: inline; margin-bottom: 10px}
 tr{transition:all .25s ease-in-out}
 
-tr:hover{background-color:#999;}
+
 
 img{ cursor: pointer;}
 
@@ -84,8 +102,7 @@ img{ cursor: pointer;}
 #conteudoPagina {
     float: left;
     height: auto;
-    width: 80%;
-    background-color: #fff;
+    width: 98%;
     margin: 1%;
 }
 
@@ -104,13 +121,135 @@ img{ cursor: pointer;}
     height: auto;
     width: 100%;
 }
+#conteudoHome{
+    display: none;
+}
+
+#conteudoPaginaJogador{
+    display: none;
+}
+
+#divErrosCriacaoJogador{
+    float: left; 
+    display: none; 
+    color: red; 
+    font-weight: bold;
+}
+
+#divTabelaJogadores{
+    float: left; 
+    display: none;
+    width: 100%;
+}
+
+#divNaoExistemJogadores{
+    float: left; 
+    display: none; 
+    color:red; 
+    font-weight: bold;
+}
+
+#conteudoPaginaClube{
+    display: none;
+} 
+
+#divErrosCriacaoClube{
+    float: left;
+    display: none; 
+    color: red; 
+    font-weight: bold;
+} 
+
+#divTabelaClubes{
+    float: left; 
+    display: none;
+    width: 100%;
+}
+
+#divNaoExistemClubes{ 
+    float: left;
+    display: none; 
+    color: red; 
+    font-weight: bold;
+}
+
+#divEquipa{
+    float: left; 
+    display: none;
+}
+
+#divMercadoJogadores{
+    float: left;
+    display: none;
+}
+
+#divTabelaEquipa{
+    float: right;
+     display: none;
+}
+
+#divErrosEquipa{
+    float: left; 
+    display: none; 
+    color: red; 
+    font-weight: bold
+}
+
+#conteudoPaginaLiga{
+    display: none;
+}
+
+#conteudoPaginaTaca{
+    display: none;
+    }
+
+#formularioJogador{
+    float: left;
+}
+
+
+td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 90%;
+    margin-top:3%;
+    margin-right:auto; 
+    margin-left:auto;
+}
 
 
 
+th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+    background-color: #778899;
+}
 
-#divTabelaClubes tr{cursor: pointer;}
+tr:nth-child(even) {
+    background-color: #dddddd;}
 
+tr:nth-child(odd) {
+    background-color: #fff;}
 
+    tr:hover{background-color:#999;}
 
-
-
+button {
+    background-color: #ccccb3; 
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+}
