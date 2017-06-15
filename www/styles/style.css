@@ -1,6 +1,24 @@
+<!-- responsiv Css-->
+
+* {
+    box-sizing: border-box;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+}
+
+
+
 html, body {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     background-image: url("/images/futebol.jpg");
     background-size: cover;
     font-family: Arial, Helvetica, Sans-Serif;
@@ -8,25 +26,43 @@ html, body {
     width: 100%;
 }
 
+#total {
+    margin: 0 auto;
+    border: 5px solid black;
+    width: calc(90% - 10px); 
+    height: calc(95% - 10px);
+    display: table;
+     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
 
+.menu li {
+    padding: 8px;
+    margin-bottom: 7px;
+    background-color: #33b5e5;
+    color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
 
-.formJogador{margin-top: 200px; margin-left: 50px}
-.formJogador input{display: inline; margin-bottom: 10px}
-tr{transition:all .25s ease-in-out}
+#menus {
+    float: left;
+    height: auto;
+    width: auto;
+    display: table;
+    
+}
 
-tr:hover{background-color:#999;}
-
-img{ cursor: pointer;}
-
-
-ul{
-    margin:0px; padding: 0px;
+ul #menu{
+    margin:0px; 
+    padding: 0px;
+    list-style-type: none;
+    width: 100%;
 }
 
 ul li a{
-
+    display: inline-block;
+    width: calc(100% - 32px);
     text-decoration: none;
     color:white;
+   
 }
 
 ul li{
@@ -43,7 +79,7 @@ ul li{
 }
 
 ul li a:hover{
-    background-color:orange;
+    background-color:#285189;
 }
 ul li ul li{
     display: none;
@@ -54,27 +90,24 @@ ul li:hover ul li{
 }
 
 
-#total {
-    margin: 0px auto;
-    border: 5px solid #000;
-    height: 98%;
-    width: 88%;
-    display: table;
-}
 
 
-#menu {
-    float: left;
-    height: auto;
-    width: auto;
-    display: table;
-}
+
+.formJogador{margin-top: 200px; margin-left: 50px}
+.formJogador input{display: inline; margin-bottom: 10px}
+tr{transition:all .25s ease-in-out}
+
+tr:hover{background-color:#999;}
+
+img{ cursor: pointer;}
+
+
 
 #conteudoPagina {
     float: left;
     height: auto;
-    width: 80%;
-    background-color: #fff;
+    width: auto;
+
     margin: 1%;
 }
 
@@ -94,10 +127,41 @@ ul li:hover ul li{
     width: 100%;
 }
 
+footer
+{
+clear: both;
+text-align: right;
+color: #FFF;
+font-size: 0.8em;
+padding: 15px 5px;
+border-top: 5px solid black;
+height: calc(5% - 35px); /* -2 x 15px – 5px */
 
-
+}
 
 #divTabelaClubes tr{cursor: pointer;}
+
+
+/* For desktop: */
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
+}
 
 
 
