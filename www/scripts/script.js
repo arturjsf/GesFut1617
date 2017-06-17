@@ -1,20 +1,43 @@
 ///VARIAVEIS DE CONTROLO
 var clubeSelecionado = -1; //-1 se é um clube novo
 var jogadorSeleccionado = -1; //-1 é um jogador novo
+var tacaSelecionada = -1;
+var controloJogadoresDefault = true;
+var controloClubesDefault = true;
+var controloTacasDefault = true;
 
 //CONTADORES
 var contadorJogador = 1;
 var contadorClube = 1;
+var contadorTaca = 1;
 
 //ARRAYS
 var arrayJogadores = new Array();
 var arrayClubes = new Array();
-var arrayTaca = new Array();
+var arrayTacas = new Array();
 
+//COMO DEVERIAMOS TER COMECADO OS ARRAYS 
+/*
+function Jogadores(){
+    this.arrayJogadores = new Array();
+}
+
+function Clubes(){
+    this.arrayClubes = new Array();
+}
+
+function Tacas(){
+    this.arrayTacas = new Array();
+}
+*/
 //ARRAYS DE ELEMENTOS 
 var PosicaoJogador = ["GR", "DF", "MC","AV"];
 var Paises = ["PTG","ESP","ARG","ALE","FRA","BRA","ITA","SUE","FRA","MEX"];
 
+
+/**
+ * ------------------------------------------------C O N S T R U T O R E S---------------------------------------------------------
+ */
 
 /**
  *  CONSTRUTOR JOGADOR
@@ -36,13 +59,10 @@ function Jogador(nomeJogador, data, paisJogador, altura, posicao) {
 
     if (Jogador._inicializado == undefined) {
         Jogador.prototype.paraString = function () {
-            return this.nomeJogador + ": " +this.posicao + " - " + this.disponivel;
+            return this.idJogador + " " + this.nomeJogador + ": " +this.posicao + " - " + this.disponivel;
         };
         Jogador._inicializado = true;
-    }
-
-    
-
+    }  
 }
 
 /**
@@ -60,8 +80,8 @@ function Clube(nomeClube, acr, paisClube, url, descricao) {
     this.paisClube = paisClube;
     this.url = url;
     this.descricao = descricao;
-    this.Equipa = new Array(Jogador);
-    this.valido = verificar11Clube();
+    this.Equipa = new Array();
+    this.valido = verificar11Equipa();
 
     if (Clube._inicializado == undefined) {
         Clube.prototype.paraString = function () {
@@ -69,6 +89,22 @@ function Clube(nomeClube, acr, paisClube, url, descricao) {
         };
         Clube._inicializado = true;
     }
+}
+
+
+/**
+ * Construtor Taca contem um array de Clubes. so quando comeca a Taca k a atividade passa a true
+ * @param {*} nomeTaca 
+ * @param {*} numeroEdicoes 
+ * @param {*} numeroEquipas 
+ */
+function Taca(nomeTaca, edicaoTaca, numeroClubes){
+    this.idTaca = contadorTaca++;
+    this.nomeTaca = nomeTaca;
+    this.edicaoTaca = edicaoTaca;
+    this.numeroClubes = numeroClubes;
+    this.atividade = false;
+    this.Clubes = new Array();
 }
 
 
@@ -123,6 +159,8 @@ function adicionarJogador() {
 
         //e cria a tabela de jogadores
         criarTabelaJogadores();
+        //loadConteudoEquipa();
+        criarTabelaMercadoJogadores();
 
     }
 }
@@ -134,8 +172,6 @@ function adicionarJogador() {
  *  Metodo de criacao de tabela
  */
 function criarTabelaJogadores() {
-
-    imprimirArrayjogadores();
 
       if(arrayJogadores.length > 0){
     //criamos uma tabela nova que será substituida pela antiga que está no HTML
@@ -286,20 +322,10 @@ function criarTabelaJogadores() {
     document.getElementById("divTabelaJogadores").style.display = 'block';
 
     //cada vez que um jogador e criado e necessario atualizar a combobox do mercado
-    gerarDropDownMercadoJogadoresLivres();
+   // gerarDropDownMercadoJogadoresLivres();
+   criarTabelaMercadoJogadores();
       }  
 }
-
-function imprimirArrayjogadores(){
-
-    for (var index = 0; index < arrayJogadores.length; index++) {
-        console.log("Jogador:"+ arrayJogadores[index].paraString());
-        
-    }
-}
-
-
-
 
 
 /**
@@ -317,15 +343,18 @@ function editarJogador(indice) {
     document.getElementById("altura").value = arrayJogadores[indice].altura;
     document.getElementById("posicao").value = arrayJogadores[indice].posicao;
 
+    //atualiza a tabela de jogadores
+   // criarTabelaJogadores();
+
      //atualizacao da combobox de mercado
-    gerarDropDownMercadoJogadoresLivres();
+    //criarTabelaMercadoJogadores();
+    
 }
 
 
 /**
  * Se nao existir num Clube, Apaga do arrayJogadores e mete os inputs a null
  */
-
 function removerJogador(indice) {
    
     var divErrosCriacaoJogador = document.getElementById('divErrosCriacaoJogador');
@@ -360,7 +389,9 @@ function removerJogador(indice) {
        // gerarDropDownPosicao();
 
         //atualizacao da combobox de mercado
-         gerarDropDownMercadoJogadoresLivres();
+        // gerarDropDownMercadoJogadoresLivres();
+        criarTabelaMercadoJogadores();
+        criarTabelaEquipa(clubeSelecionado);
 
         
     }
@@ -397,7 +428,7 @@ function adicionarClube() {
             var descricao = document.getElementById("descricao").value;
 
 
-            //se é uma Clube nova ou se é uma selecionado
+            //se é u Clube novo ou se é um selecionado
              if (clubeSelecionado== -1) {
                 arrayClubes.push(new Clube(nomeClube, acr, paisClube, url, descricao));
             } else {
@@ -572,8 +603,8 @@ function criarTabelaClubes() {
 
 
         //cada linha vai ter a propriedade onclick
-        linha.id = i + "equipa";
-        linha.onclick = function () { gerarDIVAdicionarJogador(this.id.charAt(0)) };
+        linha.id = i + "clube";
+        linha.onclick = function () { loadConteudoEquipa(this.id.charAt(0)) };
         tabelaNova.appendChild(linha);
     }
 
@@ -583,10 +614,10 @@ function criarTabelaClubes() {
     //faz a substituicao das tabelas
     document.getElementById("divTabelaClubes").replaceChild(tabelaNova, oldTabela);
     document.getElementById("divTabelaClubes").style.display = 'block';  
-    document.getElementById("divEquipa").style.display = 'block';
 
      //atualizacao da combobox de mercado
-    gerarDropDownMercadoJogadoresLivres();
+    //gerarDropDownMercadoJogadoresLivres();
+    //criarTabelaMercadoJogadores();
     }
     
 }
@@ -643,9 +674,12 @@ function removerClube(indice) {
         arrayClubes.splice(indice, 1);
         
         criarTabelaClubes();
+        criarTabelaMercadoJogadores();
         loadConteudoClube();
+        //loadConteudoEquipa();
        // gerarDropDownPaisesClube();
-        gerarDropDownMercadoJogadoresLivres();
+        //gerarDropDownMercadoJogadoresLivres();
+        
         
 
     // clear input text
@@ -666,24 +700,8 @@ function removerClube(indice) {
 
 
 
-/**
- * Adiciona o jogador selecionado na combobox ao array Equipa do Clube
- * Mete a disponibilidade desse jogador a false
- */
-function gerarDIVAdicionarJogador(indiceEquipa) {
 
-    console.log("ENTROU NO ADD J/E");
-
-         loadConteudoEquipa(indiceEquipa);
-
-         //criarTabelaMercadoJogadores();
-
-         //criarTabelaEquipa(indiceEquipa);
-
-    
-}
-
-
+/*
 function criarTabelaMercadoJogadores(indiceEquipa){
 
     //se tiver jogadores 
@@ -694,26 +712,167 @@ function criarTabelaMercadoJogadores(indiceEquipa){
     tabelaNova.id = "tabelaClubes";
     }
 }
+*/
+
+/**
+ * Tabela de jogadores livres
+ */
+function criarTabelaMercadoJogadores() {
+
+      if(arrayJogadores.length > 0){
+
+    //criamos uma tabela nova que será substituida pela antiga que está no HTML
+    var tabelaNova = document.createElement("table");
+    tabelaNova.id = "tabelaMercadoJogadores";
+
+    var caption = tabelaNova.createCaption();
+    var titulo = document.createTextNode("LISTA JOGADORES LIVRES");
+    caption.appendChild(titulo);
+    tabelaNova.appendChild(caption);
+
+    //criar as celulas e texto
+    var celulaCabecalhoID = document.createElement("th");
+    var textoCabecalhoID = document.createTextNode("ID");
+    celulaCabecalhoID.appendChild(textoCabecalhoID);
+
+    var celulaCabecalhoNome = document.createElement("th");
+    var textoCabecalhoNome = document.createTextNode("Nome");
+    celulaCabecalhoNome.appendChild(textoCabecalhoNome);
+
+    var celulaCabecalhoPosicao = document.createElement("th");
+    var textoCabecalhoPosicao = document.createTextNode("Posição");
+    celulaCabecalhoPosicao.appendChild(textoCabecalhoPosicao);
+   
+    var celulaCabecalhoDisponibilidade = document.createElement("th");
+    var textoCabecalhoDisponibilidade = document.createTextNode("Disponivel");
+    celulaCabecalhoDisponibilidade.appendChild(textoCabecalhoDisponibilidade);
+
+    var celulaCabecalhoADD = document.createElement("th");
+    var textoCabecalhoADD = document.createTextNode(" ");
+    celulaCabecalhoADD.appendChild(textoCabecalhoADD);
+   
+
+    //adicionar á TR
+    var linhaCabecalho = document.createElement("tr");
+    linhaCabecalho.appendChild(celulaCabecalhoID);
+    linhaCabecalho.appendChild(celulaCabecalhoNome);
+    linhaCabecalho.appendChild(celulaCabecalhoPosicao);
+    linhaCabecalho.appendChild(celulaCabecalhoDisponibilidade);
+    linhaCabecalho.appendChild(celulaCabecalhoADD);
+
+    
+    tabelaNova.appendChild(linhaCabecalho);
+
+    //Enquanto houverem jogadores na tabela arrayJogadores...
+    for (var i = 0; i < arrayJogadores.length; i++) {   
+
+        if (arrayJogadores[i].disponivel == true){
+
+        var linha = document.createElement("tr");
+        linha.id = i;
+
+        var celulaID = document.createElement("td");
+        var idJogador = document.createTextNode(arrayJogadores[i].idJogador);
+        celulaID.appendChild(idJogador);
+        //celulaNome.style.border = "1px solid black";
+        linha.appendChild(celulaID);
+
+        var celulaNome = document.createElement("td");
+        var nomeJogador = document.createTextNode(arrayJogadores[i].nomeJogador);
+        celulaNome.appendChild(nomeJogador);
+        //celulaNome.style.border = "1px solid black";
+        linha.appendChild(celulaNome);
+
+        
+        var celulaPosicao = document.createElement("td");
+        var posicao = document.createTextNode(arrayJogadores[i].posicao);
+        celulaPosicao.appendChild(posicao);
+        //celulaNome.style.border = "1px solid black";
+        linha.appendChild(celulaPosicao);
+
+        var celulaDisponibilidade = document.createElement("td");
+        var disponivel = document.createTextNode(arrayJogadores[i].disponivel);
+        celulaDisponibilidade.appendChild(disponivel);
+        //celulaNome.style.border = "1px solid black";
+        linha.appendChild(celulaDisponibilidade);
+
+
+        var celulaADD = document.createElement("td");
+        var imgADDJogador = document.createElement('img');
+        imgADDJogador.setAttribute('id', linha.id);
+        imgADDJogador.setAttribute('src', 'images/add.png'); 
+        imgADDJogador.onclick = function () { atribuirJogador(this.id); };
+        celulaADD.appendChild(imgADDJogador);
+        //celulaNome.style.border = "1px solid black";
+        linha.appendChild(celulaADD);
+
+        
+        //linha.onclick = function () { editarJogador(this.) };
+
+        tabelaNova.appendChild(linha);
+    }
+    }
+    //tabela.style.border = "2px solid black";
+    tabelaNova.setAttribute("border", "1");
+    var oldTabela = document.getElementById("tabelaMercadoJogadores");
+    //faz a substituicao das tabelas
+    document.getElementById("divTabelaMercadoJogadores").replaceChild(tabelaNova, oldTabela);
+    document.getElementById("divTabelaMercadoJogadores").style.display = 'block';
+
+    //cada vez que um jogador e criado e necessario atualizar a combobox do mercado
+    //gerarDropDownMercadoJogadoresLivres();
+      }  
+}
+
+
+
 
 /**
  * Adiciona o jogador á equipa e chama o criarTabelaEquipa para redesenhar a tabela com o novo jogador adicionado
  * @param {*} indice 
  */
-function atribuirJogador(){
+function atribuirJogador(indiceJogador){
+
+        var indiceClube = clubeSelecionado;
 
 
-          var comboBoxMercadoJogadores = document.getElementById("cbListaJogadores");
-          var jogador = comboBoxMercadoJogadores.options[comboBoxMercadoJogadores.selectedIndex].text;
+        //jogadorSeleccionado = indiceJogador;
 
        //introduz na tabela jogadores por Clube
-        arrayClubes[indiceEquipa].Equipa.push(jogador);
+        arrayClubes[indiceClube].Equipa.push(arrayJogadores[indiceJogador]);
 
         
-        //e mete a disponibilidade do jogador a false
-        arrayClubes[indiceEquipa].Equipa[indiceJogador].jogador.disponivel = false;
+        //e mete a disponibilidade do jogador a false no arrayJogadores e no arrayEquipa que está dentro do arrayClubes
+        arrayJogadores[indiceJogador].disponivel = false;
+       // arrayClubes[indiceClube].Equipa[indiceJogador].disponivel = false;
+        
 
-        criarTabelaEquipa(indiceEquipa);
+        //atualiza a tabela de jogadores com o jogador a false
+        criarTabelaJogadores();
 
+        //imprimir tabela para testar se o jogador foi atribuido á equipa
+        //imprimirTabela(indiceJogador);
+
+        //cria/atualiza a tabela com o jogador adicionado
+        criarTabelaEquipa(clubeSelecionado);
+
+        //verifica se a equipa ja tem 11
+        verificar11Equipa();
+
+        loadConteudoEquipa(clubeSelecionado);
+
+}
+
+
+function imprimirTabela(indiceJogador){
+
+
+
+    for (var index = 0; index < arrayClubes[clubeSelecionado].Equipa.length; index++) {
+
+        console.log(" Imprime: "+arrayClubes[clubeSelecionado].Equipa[indiceJogador].nomeJogador.toString()+"");
+        
+    }
 }
 
 /*
@@ -724,7 +883,7 @@ function adicionarJogadorClube() {
 
 
         //vai buscar o jogador selecionado á comboBox
-        var jogador = document.getElementById("cbListaJogadores").selectedIndex;
+        var jogador = document.getElementById("cbMercadoJogadores").selectedIndex;
 
         //verifica se o jogador ja existe na Clube e se ta disponivel. se ja existe exibe a msg de erro
         var exists = false;
@@ -776,9 +935,17 @@ function criarTabelaEquipa(indice){
     var celulaCabecalhoPosicao = document.createElement("th");
     var textoCabecalhoPosicao = document.createTextNode("Posição");
     celulaCabecalhoPosicao.appendChild(textoCabecalhoPosicao);
+
+    var celulaCabecalhoPosicao = document.createElement("th");
+    var textoCabecalhoPosicao = document.createTextNode("Posição");
+    celulaCabecalhoPosicao.appendChild(textoCabecalhoPosicao);
    
+  /*  var celulaCabecalhoDisponivel = document.createElement("th");
+    var textoCabecalhodisponivel = document.createTextNode("Disponivel");
+    celulaCabecalhoDisponivel.appendChild(textoCabecalhodisponivel);*/
+
     var celulaCabecalhoREMOVE = document.createElement("th");
-    var textoCabecalhoREMOVE = document.createTextNode("Desatribuir Jogador");
+    var textoCabecalhoREMOVE = document.createTextNode(" ");
     celulaCabecalhoREMOVE.appendChild(textoCabecalhoREMOVE);
 
 
@@ -786,8 +953,9 @@ function criarTabelaEquipa(indice){
     //adicionar á TR
     var linhaCabecalho = document.createElement("tr");
     linhaCabecalho.appendChild(celulaCabecalhoID);
-    linhaCabecalho.appendChild(celulaCabecalhoNome);
+    linhaCabecalho.appendChild(celulaCabecalhoNomeJogador);
     linhaCabecalho.appendChild(celulaCabecalhoPosicao);
+  //  linhaCabecalho.appendChild(celulaCabecalhoDisponivel);
     linhaCabecalho.appendChild(celulaCabecalhoREMOVE);
 
     tabelaNova.appendChild(linhaCabecalho);
@@ -797,32 +965,32 @@ function criarTabelaEquipa(indice){
     for (var i = 0; i < arrayClubes[indice].Equipa.length; i++) {
 
         var linha = document.createElement("tr");
-
+        
         var celulaID = document.createElement("td");
-        var id = document.createTextNode(arrayJ);
+        var id = document.createTextNode(arrayClubes[indice].Equipa[i].idJogador);
         celulaID.appendChild(id);
         //celulaNome.style.border = "1px solid black";
         linha.appendChild(celulaID);
     
         var celulaNome = document.createElement("td");
-        var nomeJogador = document.createTextNode(arrayJogadoresClube[i].jogador.nomeJogador);
+        var nomeJogador = document.createTextNode(arrayClubes[indice].Equipa[i].nomeJogador);
         celulaNome.appendChild(nomeJogador);
         //celulaNome.style.border = "1px solid black";
         linha.appendChild(celulaNome);
 
         
         var celulaPosicao = document.createElement("td");
-        var posicao = document.createTextNode(arrayJogadoresClube[i].jogador.posicao);
-        celulaPosicao.appendChild(posicao);
-        //celulaNome.style.border = "1px solid black";
-        linha.appendChild(celulaPosicao);
-  
-        var celulaREMOVE = document.createElement("td");
-        var remover = document.createTextNode(arrayJogadoresClube[i].jogador.posicao);
+        var posicao = document.createTextNode(arrayClubes[indice].Equipa[i].posicao);
         celulaPosicao.appendChild(posicao);
         //celulaNome.style.border = "1px solid black";
         linha.appendChild(celulaPosicao);
 
+      /*  var celulaDisponivel = document.createElement("td");
+        var disponivel = document.createTextNode(arrayClubes[indice].Equipa[i].disponivel);
+        celulaDisponivel.appendChild(disponivel);
+        //celulaNome.style.border = "1px solid black";
+        linha.appendChild(celulaDisponivel);*/
+  
         var celulaDesatribuir = document.createElement("td");
         var imgDesatribuirJogador = document.createElement('img');
         imgDesatribuirJogador.setAttribute('id', linha.id);
@@ -837,13 +1005,16 @@ function criarTabelaEquipa(indice){
 
     //tabela.style.border = "2px solid black";
     tabelaNova.setAttribute("border", "1");
-    var oldTabela = document.getElementById("tabelaJogadoresPorClube");
+    var oldTabela = document.getElementById("tabelaEquipa");
     //faz a substituicao das tabelas
-    document.getElementById("tabelaJogadoresPorClube").replaceChild(tabelaNova, oldTabela);
-    document.getElementById("tabelaJogadoresPorClube").style.display = 'block';
+    document.getElementById("divTabelaEquipa").replaceChild(tabelaNova, oldTabela);
+    document.getElementById("divTabelaEquipa").style.display = 'block';
+
+    
 
      //atualizar a combobox do mercado
-    gerarDropDownMercadoJogadoresLivres();
+    //gerarDropDownMercadoJogadoresLivres();
+    criarTabelaMercadoJogadores();
 }
 
 /**
@@ -853,6 +1024,214 @@ function criarTabelaEquipa(indice){
 function desatribuirJogador(indice){
 
 }
+
+/**
+ * -------------------------------------------------F U N C O E S   T A C A ------------------------------------------------------------------
+ */
+
+
+/**
+ * Adicionar ou edita o Taca consoante a variavel de controlo selecionar Taca
+ */
+function adicionarTaca() {
+    // vai buscar o id da tabela
+    // cria uma linha e celulas
+    // vai buscar os dados dos inputs
+    // e manda pra dentro das celulas
+    if (!verificarDadosTaca()) {
+        if (!verificarNumeroClubes()){
+
+           var nomeTaca = document.getElementById("nomeTaca").value;
+           var edicaoTaca = document.getElementById("edicaoTaca").value;
+           var numeroClubes = document.getElementById("numeroClubes").value;
+
+
+
+            //se é uma taca nova ou se é um selecionado.
+             if (tacaSelecionada == -1) {
+                arrayTacas.push(new Taca(nomeTaca, edicaoTaca, numeroClubes));
+            } else {
+                arrayTacas[tacaSelecionada].nomeTaca = nomeTaca;
+                arrayTacas[tacaSelecionada].edicaoTaca = edicaoTaca;
+                arrayTacas[tacaSelecionada].numeroClubes = numeroClubes;
+                              
+                tacaSelecionada = -1;
+        }
+
+
+        //limpa dos formularios
+        document.getElementById("nomeTaca").value = "";
+        document.getElementById("edicaoTaca").value = "";
+        document.getElementById("numeroClubes").value = "";
+
+
+        //e cria a tabela da taca
+        criarTabelaTacas();
+    }
+}
+}
+
+
+
+/**
+ *  Metodo de criacao de tabela
+ */
+function criarTabelaTacas() {
+
+
+    if(arrayTacas.length > 0){
+
+    //criamos uma tabela nova que será substituida pela antiga que está no HTML
+    var tabelaNova = document.createElement("table");
+    tabelaNova.id = "tabelaTacas";
+
+    var caption = tabelaNova.createCaption();
+    var titulo = document.createTextNode("LISTA TAÇAS");
+    caption.appendChild(titulo);
+    tabelaNova.appendChild(caption);
+
+    //criar as celulas e texto
+    var celulaCabecalhoIDTaca = document.createElement("th");
+    var textoCabecalhoIDTaca = document.createTextNode("ID");
+    celulaCabecalhoIDTaca.appendChild(textoCabecalhoIDTaca);
+
+    var celulaCabecalhoNomeTaca = document.createElement("th");
+    var textoCabecalhoNomeTaca = document.createTextNode("Nome Taça");
+    celulaCabecalhoNomeTaca.appendChild(textoCabecalhoNomeTaca);
+
+    var celulaCabecalhoEdicoes = document.createElement("th");
+    var textoCabecalhoEdicoes = document.createTextNode("Edições");
+    celulaCabecalhoEdicoes.appendChild(textoCabecalhoEdicoes);
+
+    var celulaCabecalhoClubes = document.createElement("th");
+    var textoCabecalhoClubes = document.createTextNode("Clubes");
+    celulaCabecalhoClubes.appendChild(textoCabecalhoClubes);
+    
+    var celulaCabecalhoREMOVE = document.createElement("th");
+    var textoCabecalhoREMOVE = document.createTextNode(" ");
+    celulaCabecalhoREMOVE.appendChild(textoCabecalhoREMOVE);
+
+    //adicionar á TR
+    var linhaCabecalho = document.createElement("tr");  
+    linhaCabecalho.appendChild(celulaCabecalhoIDTaca);
+    linhaCabecalho.appendChild(celulaCabecalhoNomeTaca);
+    linhaCabecalho.appendChild(celulaCabecalhoEdicoes);
+    linhaCabecalho.appendChild(celulaCabecalhoClubes);
+    linhaCabecalho.appendChild(celulaCabecalhoREMOVE);
+
+    
+    tabelaNova.appendChild(linhaCabecalho);
+
+    //Enquanto houverem Taças no arrayTaças
+    for (var i = 0; i < arrayTacas.length; i++) {
+
+        var linha = document.createElement("tr");
+        linha.id = i;
+
+        var celulaIDTaca = document.createElement("td");
+        var idTaca = document.createTextNode(arrayTacas[i].idTaca);
+        celulaIDTaca.appendChild(idTaca);
+        //celulaNome.style.border = "1px solid black";
+        linha.appendChild(celulaIDTaca);
+
+        var celulaNome = document.createElement("td");
+        var nomeTaca = document.createTextNode(arrayTacas[i].nomeTaca);
+        celulaNome.appendChild(nomeTaca);
+        //celulaNome.style.border = "1px solid black";
+        linha.appendChild(celulaNome);
+
+        var celulaEdicoes = document.createElement("td");
+        var numeroEdicoes = document.createTextNode(arrayTacas[i].edicaoTaca);
+        celulaEdicoes.appendChild(numeroEdicoes);
+        //celulaTipo.style.border = "1px solid black";
+        linha.appendChild(celulaEdicoes);
+
+        var celulaClubes = document.createElement("td");
+        var numeroClubes = document.createTextNode(arrayTacas[i].numeroClubes);
+        celulaClubes.appendChild(numeroClubes);
+        //celulaPreco.style.border = "1px solid black";
+        linha.appendChild(celulaClubes);
+        
+
+        var celulaREMOVE = document.createElement("td");
+        var imgREMOVETaca = document.createElement('img');
+        imgREMOVETaca.setAttribute('id', linha.id);
+        imgREMOVETaca.setAttribute('src', 'images/delete.png'); 
+        imgREMOVETaca.onclick = function () { removerTaca(this.id) };
+        celulaREMOVE.appendChild(imgREMOVETaca);
+        //celulaNome.style.border = "1px solid black";
+        linha.appendChild(celulaREMOVE);
+        
+        //cada linha vai ter a propriedade onclick
+        linha.id = i + "taca";
+        linha.onclick = function () { loadConteudoTorneio(this.id.charAt(0)) };
+        tabelaNova.appendChild(linha);
+    }
+
+    //tabela.style.border = "2px solid black";
+    tabelaNova.setAttribute("border", "1");
+    var oldTabela = document.getElementById("tabelaTacas");
+    //faz a substituicao das tabelas
+    document.getElementById("divTabelaTacas").replaceChild(tabelaNova, oldTabela);
+    document.getElementById("divTabelaTacas").style.display = 'block';  
+
+
+    }
+    
+}
+
+
+
+/**
+ * Se nao existir numa Taca, Apaga do arrayClube e mete os inputs a null
+ */
+function removerTaca(indice) {
+
+
+    var divErrosCriacaoTaca = document.getElementById('divErrosCriacaoTaca');
+
+    var confirmacao = confirm("Deseja apagar a Taça?");
+    
+    if(confirmacao == true){
+     if (existeTacaEmAtividade()) {
+        divErrosCriacaoClube.style.display = 'block';
+
+        var textoErro;
+            textoErro = document.createTextNode("A taça ainda está em atividade!");
+
+
+        var oldErro = divErrosCriacaoTaca.firstChild;
+        if (oldErro == null) {
+            divErrosCriacaoTaca.appendChild(textoErro);
+        } else {
+            divErrosCriacaoTaca.replaceChild(textoErro, oldErro);  
+        }
+
+    } else {
+        arrayTacas.splice(indice, 1);
+        
+        criarTabelaTacas();
+        loadConteudoTaca();
+        
+    
+        //limpa dos formularios
+        document.getElementById("nomeTaca").value = "";
+        document.getElementById("edicaoTaca").value = "";
+        document.getElementById("numeroClubes").value = "";
+
+    }
+    }else{
+        return;
+    }
+}
+
+
+
+
+
+
+
+
 
 
 /** --------------------------------------------------L O A D    D A S    P A G I N A S ---------------------------------------------------------
@@ -879,6 +1258,11 @@ function loadConteudoHome() {
  * Se o arrayJogadores tiver vazio oculta a tabela e mostra uma msg de alerta
  */
 function loadConteudoJogador() {
+
+    if(controloJogadoresDefault == true){
+        jogadoresDefault();
+        controloJogadoresDefault = false;
+    }
     
     document.getElementById("conteudoPaginaJogador").style.display = 'block';
 
@@ -903,6 +1287,11 @@ function loadConteudoJogador() {
  * 
  */
 function loadConteudoClube() {
+
+     if(controloClubesDefault == true){
+        clubesDefault();
+        controloClubesDefault = false;
+    }
  
     document.getElementById("conteudoPaginaClube").style.display = 'block';
 
@@ -915,7 +1304,7 @@ function loadConteudoClube() {
     if(arrayClubes.length == 0){
         document.getElementById("divTabelaClubes").style.display = 'none'; // nao seria none?;
         document.getElementById("divNaoExistemClubes").style.display = 'block';
-        //document.getElementById("divEquipa").style.display = 'none';
+        document.getElementById("divEquipa").style.display = 'none';
 
         
     }else{
@@ -930,25 +1319,95 @@ function loadConteudoClube() {
 
 /**
  * Faz o load do conteudo da div Adicionar jogadores á Equipa. 
- * São 2 tabelas. Uma com os jogadores livres e outra com a equipa a serem adicionados
+ * Contem 3 divs. Erros, 
  * 
  */
 function loadConteudoEquipa(indice) {
- 
-    document.getElementById("divEquipa").style.display = 'block';
-    
-    if(arrayClubes[indice].Equipa.length == 0){
-        document.getElementById("divMercadoJogadores").style.display = 'none'; // nao seria none?;
-        document.getElementById("divErrosEquipa").style.display = 'block';
 
+    clubeSelecionado = indice;
+ 
+    var divEquipa = document.getElementById("divEquipa");
+    var divErrosEquipa = document.getElementById('divErrosEquipa');
+    var divMercadoJogadores = document.getElementById('divTabelaMercadoJogadores');
+    var divTabelaEquipa = document.getElementById('divTabelaEquipa');
+
+    divEquipa.style.display = 'block';
+    
+    //se array de jogadores esta vazio ou se nao existem jogadores na equipa
+    if(arrayJogadores.length == 0 || arrayClubes[indice].Equipa.length == 0){
+
+        var textoErros;
+        if(arrayJogadores.length == 0){
+            textoErros = document.createTextNode("Não existem jogadores no Mercado! Crie um jogador primeiro!");
+            divMercadoJogadores.style.display = 'none';
+            divTabelaEquipa.style.display = 'none';
+        }else{           
+            textoErros = document.createTextNode("Equipa sem jogadores! Adicione um jogador");
+            divMercadoJogadores.style.display = 'block';
+            divTabelaEquipa.style.display = 'none';
+        }
+
+          var oldErro = divErrosEquipa.firstChild;
+
+        if (oldErro == null) {
+            divErrosEquipa.appendChild(textoErros);
+        } else {
+            divErrosEquipa.replaceChild(textoErros, oldErro);
+        }
+
+        divErrosEquipa.style.display = 'block';
+          
         
+        //sucesso
     }else{
-         document.getElementById("divMercadoJogadores").style.display = 'block';  
-         document.getElementById("divErrosEquipa").style.display = 'none';
+         divErrosEquipa.style.display = 'none';
+         divMercadoJogadores.style.display = 'block';
+         divTabelaEquipa.style.display = 'block';
     }
 }
 
 
+
+function loadConteudoTorneio(indice){
+
+    tacaSelecionada = indice;
+
+    console.log("Entrou dentro do torneio");
+
+
+    
+
+    
+}
+
+
+/**
+ * Faz o load do conteudo da pagina Taca
+ * 
+ */
+function loadConteudoTaca() {
+
+       if(controloTacasDefault == true){
+        tacasDefault();
+        controloTacasDefault = false;
+    }
+
+ 
+    document.getElementById("conteudoPaginaTaca").style.display = 'block';
+
+    document.getElementById("conteudoHome").style.display = 'none';
+    document.getElementById("conteudoPaginaJogador").style.display = 'none';
+    document.getElementById("conteudoPaginaClube").style.display = 'none';
+    document.getElementById("conteudoPaginaLiga").style.display = 'none';
+
+     if(arrayTacas.length == 0){
+        document.getElementById("divTabelaTacas").style.display = 'none' // nao seria none?;
+        document.getElementById("divNaoExistemTacas").style.display = 'block';
+    }else{
+         document.getElementById("divTabelaTacas").style.display = 'block';
+         document.getElementById("divNaoExistemTacas").style.display = 'none';      
+    }
+}
 
 
 /**
@@ -966,24 +1425,8 @@ function loadConteudoLiga() {
 }
 
 
-
-/**
- * Faz o load do conteudo da pagina Taca
- * 
- */
-function loadConteudoTaca() {
- 
-    document.getElementById("conteudoPaginaTaca").style.display = 'block';
-    document.getElementById("conteudoHome").style.display = 'none';
-    document.getElementById("conteudoPaginaJogador").style.display = 'none';
-    document.getElementById("conteudoPaginaClube").style.display = 'none';
-    document.getElementById("conteudoPaginaLiga").style.display = 'none';
-}
-
-/** --------------------------------------------------M E T O D O S   A U X I L I A R E S--------------------------------------------------------------
+/** -------------------------------------------------- M E T O D O S   A U X I L I A R E S --------------------------------------------------------------
  */ 
-
-
 
  
  /**
@@ -1002,7 +1445,7 @@ function verificarDadosJogador() {
     var textoErro;
     if (nomeJogador == "" || data == "" || altura == "" || isNaN(altura)) {
         divErrosCriacaoJogador.style.display = 'block';
-        textoErro = document.createTextNode("Error: Preencha todos os dados!");
+        textoErro = document.createTextNode("Error: Preencha todos os dados corretamente!");
 
         isEmpty = true;
 
@@ -1052,7 +1495,7 @@ function verificarDadosClube() {
     var textoErro;
     if (nomeClube == "" || acr == "" || url == "") {
         divErrosCriacaoClube.style.display = 'block';
-        textoErro = document.createTextNode("Error: Preencha todos os dados!");
+        textoErro = document.createTextNode("Error: Preencha todos os dados corretamente!");
 
         isEmpty = true;
 
@@ -1075,12 +1518,116 @@ function verificarDadosClube() {
 }
 
 
+
+ /**
+  *  verifica se os valores estao vazios,
+  */
+function verificarDadosTaca() {
+    var isEmpty = false;
+
+        var nomeTaca = document.getElementById("nomeTaca").value;
+        var edicaoTaca = document.getElementById("edicaoTaca").value;
+        var numeroClubes = document.getElementById("numeroClubes").value;
+
+      var divErrosCriacaoTaca = document.getElementById('divErrosCriacaoTaca');
+      var divNaoExistemTacas = document.getElementById('divNaoExistemTacas');
+
+    var textoErro;
+    if (nomeTaca == "" || edicaoTaca == "" || numeroClubes == "" || isNaN(edicaoTaca) || isNaN(numeroClubes) ) {
+        divErrosCriacaoTaca.style.display = 'block';
+        textoErro = document.createTextNode("Error: Preencha todos os dados corretamente!");
+
+        isEmpty = true;
+
+
+        if(isNaN(edicaoTaca) || isNaN(numeroClubes)){
+            textoErro = document.createTextNode("Error: Introduza um valor numérico!");
+            isEmpty = true;
+        } 
+
+
+        //substitui a msg de erro antiga pela nova
+        var oldErro = divErrosCriacaoTaca.firstChild;
+
+        if (oldErro == null) {
+            divErrosCriacaoTaca.appendChild(textoErro);
+        } else {
+            divErrosCriacaoTaca.replaceChild(textoErro, oldErro);
+        }
+
+    }else{
+        divErrosCriacaoTaca.style.display = 'none';
+        divNaoExistemTacas.style.display = 'none';
+        isEmpty = false;
+    }
+
+    return isEmpty;
+}
+
+
+
+
 /**
- *  Verifica se uma Clube tem 11 jogadores (1GR, 4DF, 4ME, 2AV)
+ * O numero de clubes  introduzido tem de ser 4 ou 8 ou 1
  */
-function verificar11Clube(){
+function verificarNumeroClubes(){
+
+    var isNotMultiple = false;
+
+    var numeroClubes = document.getElementById("numeroClubes").value;
+    var divErrosCriacaoTaca = document.getElementById('divErrosCriacaoTaca'); 
+    var divNaoExistemTacas = document.getElementById('divNaoExistemTacas');
+
+    var textoErro;
+
+        if(numeroClubes == 4 || numeroClubes == 8 || numeroClubes == 16){
+
+
+             divErrosCriacaoTaca.style.display = 'none';
+            divNaoExistemTacas.style.display = 'none';
+            isNotMultiple = false; 
+           
+
+            
+        
+    }else{
+        
+
+            divErrosCriacaoTaca.style.display = 'block';
+            textoErro = document.createTextNode("Error: Numero de Clubes invalido! (4,8 ou 16)");
+            isNotMultiple = true; 
+
+
+
+            //substitui a msg de erro antiga pela nova
+        var oldErro = divErrosCriacaoTaca.firstChild;
+
+        if (oldErro == null) {
+            divErrosCriacaoTaca.appendChild(textoErro);
+        } else {
+            divErrosCriacaoTaca.replaceChild(textoErro, oldErro);
+        }
+
+
+
+        }
+        
+
+        return isNotMultiple;
+}
+
+
+
+
+
+/**
+ *  Verifica se um Clube tem 11 jogadores (1GR, 4DF, 4ME, 2AV)
+ */
+function verificar11Equipa(){
    return false;
 }
+
+
 
 
 
@@ -1095,7 +1642,7 @@ function existeJogadorEmClube() {
         return false;
     } else {
         for (var i = 0; i < arrayClubes.length; i++) {
-            if (arrayClubes[i].jogador == jogadorSeleccionado) {
+            if (arrayClubes[i].Equipa.selectedIndex == jogadorSeleccionado) {
                 return true;
             }
         }
@@ -1113,8 +1660,8 @@ function existeClubeEmTaca() {
     if (clubeSelecionado == -1) {
         return false;
     } else {
-        for (var i = 0; i < arrayTaca.length; i++) {
-            if (arrayTaca[i].Clube == clubeSelecionado) {
+        for (var i = 0; i < arrayTacas.length; i++) {
+            if (arrayTacas[i].Clube == clubeSelecionado) {
                 return true;
             }
         }
@@ -1123,6 +1670,22 @@ function existeClubeEmTaca() {
 }
 
 
+
+function existeTacaEmAtividade() {
+  
+  if (tacaSelecionada == -1) {
+        return false;
+    } else {
+        for (var i = 0; i < arrayTacas.length; i++) {
+            if (arrayTacas[i].atividade == tacaSelecionada) {
+                if(arrayTacas[i].atividade == true){
+                return true;
+                }
+            }
+        }
+    }
+    return false;
+}
 
 
 /**
@@ -1170,7 +1733,8 @@ function gerarDropDownPosicao() {
 function gerarDropDownMercadoJogadoresLivres() {
 
     console.log("entrou no mercado");
-    var cbMercadoJogadores = document.getElementById("cbListaJogadores");
+    var cbMercadoJogadores = document.getElementById("cbMercadoJogadores");
+
     for (var i = 0; i < arrayJogadores.length; i++) {
         console.log("entrou no FOR mercado");
 
@@ -1178,6 +1742,9 @@ function gerarDropDownMercadoJogadoresLivres() {
             var opcoes = new Option(arrayJogadores[i].paraString(), i);
             cbMercadoJogadores.options[i] = opcoes;
         }
+
+      //  var oldComboBox = document.getElementById("cbMercadoJogadores");  
+      //  document.getElementById("cbMercadoJogadores").replaceChild(cbMercadoJogadores, oldComboBox);
     }
 }
 
@@ -1202,4 +1769,53 @@ function getAge(dateString){
     }
     return age;
 }
+
+ 
+ /**
+  * --------------------------------------------V A L O R E S    O M I S S A O ------------------------------------------------
+  */
+function jogadoresDefault(){
+
+        var jogador1 = new Jogador("CR7", "1985/03/25", "PTG", "185", "AV");
+        var jogador2 = new Jogador("Messi", "1989/03/25", "ARG", "150", "AV");
+        var jogador3 = new Jogador("Buffon", "1985/03/25", "ITA", "180", "GR");
+        var jogador4 = new Jogador("Ibra", "1983/03/25", "SUE", "190", "AV");
+
+            arrayJogadores.push(jogador1);
+            arrayJogadores.push(jogador2);
+            arrayJogadores.push(jogador3);
+            arrayJogadores.push(jogador4);
+
+            criarTabelaJogadores();
+}
+
+
+function clubesDefault(){
+
+        var clube1 = new Clube("Real Madrid", "RMA", "ESP", "www.real.com", " Los blancos");
+        var clube2 = new Clube("Juventus", "JUV", "ITA", "www.juve.com", " ");
+
+
+            arrayClubes.push(clube1);
+            arrayClubes.push(clube2);
+
+            criarTabelaClubes();
+}
+
+
+function tacasDefault(){
+
+        var taca1 = new Taca("Taça CTT 16/17", "6", "8");
+            arrayTacas.push(taca1);
+            criarTabelaTacas();
+}
+
+
+
+
+
+
+
+
+
 

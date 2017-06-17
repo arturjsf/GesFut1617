@@ -21,9 +21,9 @@
             <ul>
                 <li><a href="#" onclick="loadConteudoHome();">Home</a></li>
                 <li><a href="#" onclick="loadConteudoJogador()">Jogadores</a>
-                <li><a href="#" onclick="loadConteudoClube()">Clubes</a></li>
-                <li><a href="#" onclick="loadConteudoLiga()">Liga</a></li>
+                <li><a href="#" onclick="loadConteudoClube()">Clubes</a></li>              
                 <li><a href="#" onclick="loadConteudoTaca()">Taça</a></li>
+                <li><a href="#" onclick="loadConteudoLiga()">Liga</a></li>
             </ul>
             </li>
         </nav>
@@ -50,7 +50,7 @@
                         <input required type="text" id="nomeJogador" name="nomeJogador" placeholder="Digita o nome do jogador">
 
                         <label for="data">Dt Nascimento</label>
-                        <input required type="text" id="data" name="data" placeholder="YYYY/MM/DD">
+                        <input required type="date" id="data" name="data" placeholder="YYYY/MM/DD">
 
                         <label for="paisJogador">Pais</label>
                         <select id="paisJogador" name="paisJogador">
@@ -90,12 +90,12 @@
             </div>
 
 
-            <!--CONTEUDO Clube-->
+            <!--CONTEUDO CLUBE-->
             <div id="conteudoPaginaClube" style="display: none;">
                 <h2>Formulário Clube</h2>
 
                 
-                 <!--FORMULARIO Clube-->
+                 <!--FORMULARIO CLUBE-->
                 <div style="float: left;">
 
                     <form name="formClube">
@@ -125,7 +125,7 @@
                 </div>
 
                 
-                <!--TABELA Clube-->
+                <!--TABELA CLUBE-->
                 <div id="divTabelaClubes" style="float: left; display: none;">                      
                     <table id="tabelaClubes" border="1"></table>
 
@@ -133,7 +133,7 @@
                 </div>
 
 
-                <!-- ERRO Clube -->
+                <!-- ERRO CLUBE -->
                 <div id="divNaoExistemClubes" style="float: left; display: none; color: red; font-weight: bold;">
                     Lista de Clubes vazia. Adiciona um Clube!
                 </div>
@@ -147,34 +147,26 @@
                     <h2>Adicionar jogadores</h2>
 
                     <!--TABELA MERCADO DE JOGADORES LIVRES-->
-                  <!--  <div id="divTabelaMercadoJogadores" style="float: right;">                      
+                    <div id="divTabelaMercadoJogadores" style="float: left;" left; display: none;>                      
                         <table id="tabelaMercadoJogadores" border="1"></table>                                            
-                    </div>        -->
+                    </div>     
 
-
-                  <div id="divMercadoJogadores" style="float: left; display: none;">
-
-                     <label for="cbListaJogadores">Mercado de Jogadores</label>
-                        <select id="cbListaJogadores" name="cbListaJogadores">
-                            <option selected="selected">Escolha Jogador</option>
-                        </select>
-                    
-                        <input type="image" id="btnAddJogadorClube" onclick="atribuirJogador();" 
-                                         src ="images/add2.png" style="display: inline;" width="48" height="48">
-                       <!-- <button type="submit" id="btnRemoveJogadorClube" onclick="removerJogadorClube();" style="display: block;">&larr;Remove</button>-->
-                    </div>   
+                     
+                    <!-- ERRO JOGADOR/Clube -->
+                        <div id="divErrosEquipa" style="float: left; display: none; color: red; font-weight: bold;"></div>
 
 
                    <!--TABELA DE JOGADORES POR Clube-->
-                    <div id="divTabelaEquipa" style="float: right; display: none;">
-                       <h2>Equipa</h2>        
-                        <table id="tabelaEquipa" border="1"></table>
+
+                   <div style="float: right;">
+                      <h2>Equipa</h2>  
+
+                   
+                    <div id="divTabelaEquipa" style="display: none; float: right;">                         
+                        <table id="tabelaEquipa" border="1"></table>                         
                      </div>    
-                         <!-- ERRO JOGADOR/Clube -->
-                        <div id="divErrosEquipa" style="float: left; display: none; color: red; font-weight: bold;">
-                            Equipa sem jogadores!
-                        </div>
-                                
+                        
+                </div>                     
                                                             
                   </div>                           
 
@@ -182,18 +174,73 @@
        
 
 
-            
-            <!--CONTEUDO LIGA-->
-            <div id="conteudoPaginaLiga" style="display: none;">
-                <h1>Liga</h1>
-            </div>
-
+        
 
             
             <!--CONTEUDO TACA-->
             <div id="conteudoPaginaTaca" style="display: none;">
-                <h1>Taca</h1>
+                <h2>Formulário Taça</h2>
+
+                 <!--FORMULARIO TACA-->
+                <div style="float: left;">
+
+                    <form name="formTaca">
+                        <label for="nomeTaca">Nome Taça</label>
+                        <input required type="text" id="nomeTaca" name="nomeTaca" placeholder="Digite o nome do jogador">
+
+                        <label for="edicaoTaca">Edição</label>
+                        <input required type="number" id="edicaoTaca" name="edicaoTaca" placeholder="Insira a edição">
+
+                        <label for="numeroClubes">Numero de Clubes</label>
+                        <input required type="number" id="numeroClubes" name="numeroClubes" placeholder="Numero de clubes">
+
+                        <button type="submit" id="btnGravarTaca" onclick="adicionarTaca()">GRAVAR</button>
+                    </form>
+
+                    <!-- ERRO TACA -->
+                    <div id="divErrosCriacaoTaca" style="float: left; display: none; color: red; font-weight: bold;"></div>
+                </div>
+
+            
+
+                <!--TABELA TACA-->
+                <div id="divTabelaTacas" style="float: left; display: none;">                      
+                    <table id="tabelaTacas" border="1"></table>   
+
+                    <h5>(Clique numa taca para comecar o torneio)</h5>             
+                </div>
+
+
+                <!-- ERRO TACA -->
+                <div id="divNaoExistemTacas" style="float: left; display: none; color: red; font-weight: bold;">
+                    Lista de Taças vazia. Adiciona uma Taça!
+                </div>
+
+
+                
+                 <!--CONTEUDO TORNEIO-->
+                
+                  <div id="divTorneio" style="float: left; display: none;">
+                    <h2>Adicionar jogadores</h2>
+
+                    <!--TABELA TORNEIO-->
+                    <div id="divTabelaTorneio" style="float: left;  display: none;">                      
+                        <table id="tabelaTorneio" border="1"></table>                                            
+                    </div>                       
+                                                            
+                  </div>    
             </div>
+
+
+
+
+            <!--CONTEUDO LIGA-->
+            <div id="conteudoPaginaLiga" style="display: none;">
+                <h1>Liga</h1>
+            </div>
+ 
+
+
          </div>
 	
     </div>
@@ -215,7 +262,7 @@
       <script type="text/javascript">gerarDropDownPaisesJogador()</script>
       <script type="text/javascript">gerarDropDownPaisesClube()</script>
       <script type="text/javascript">gerarDropDownPosicao()</script>
-      <script type="text/javascript">gerarDropDownMercadoJogadoresLivres()</script>
+     <!-- <script type="text/javascript">gerarDropDownMercadoJogadoresLivres()</script>-->
 
 </body>
 
