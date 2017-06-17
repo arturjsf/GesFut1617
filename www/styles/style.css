@@ -157,10 +157,12 @@ img{ cursor: pointer;}
 }
 #conteudoHome{
     display: none;
+    width: 100%;
 }
 
 #conteudoPaginaJogador{
     display: none;
+    width: 100%;
 }
 
 #divErrosCriacaoJogador{
@@ -168,6 +170,7 @@ img{ cursor: pointer;}
     display: none; 
     color: red; 
     font-weight: bold;
+    width: 100%;
 }
 
 #divTabelaJogadores{
@@ -185,6 +188,7 @@ img{ cursor: pointer;}
 
 #conteudoPaginaClube{
     display: none;
+    width: 100%;
 } 
 
 #divErrosCriacaoClube{
@@ -210,16 +214,20 @@ img{ cursor: pointer;}
 #divEquipa{
     float: left; 
     display: none;
+    width: 100%;
+    
 }
 
 #divMercadoJogadores{
     float: left;
     display: none;
+    width: 100%;
 }
 
 #divTabelaEquipa{
     float: right;
      display: none;
+     width: 100%;
 }
 
 #divErrosEquipa{
@@ -231,14 +239,17 @@ img{ cursor: pointer;}
 
 #conteudoPaginaLiga{
     display: none;
+    width: 100%;
 }
 
 #conteudoPaginaTaca{
     display: none;
+    width: 100%;
     }
 
 #formularioJogador{
     float: left;
+    width: 100%;
 }
 
 
