@@ -2,11 +2,25 @@ html, body {
     margin: 0;
     padding: 0;
     background-image: url("/images/futebol.jpg");
-    background-size: cover;
+    background-size: 100vw 100vh;
+    background-attachment: fixed;
+    font-size: 87,5%;
     font-family: Arial, Helvetica, Sans-Serif;
+    line-height: 1.5;
     height: 100%;
     width: 100%;
 }
+
+.body{
+    margin: 0 auto;
+    width: 100%;
+    clear: both;
+}
+
+a {
+    text-decoration: none;
+}
+
 
 #total {
     margin: 0 auto;
@@ -14,15 +28,6 @@ html, body {
     width: calc(90% - 10px); 
     height: calc(97% - 10px);
     display: table;
-}
-
-
-#menus {
-    float: left;
-    height: auto;
-    width: auto;
-    display: table;
-    
 }
 
 h1{
@@ -33,11 +38,19 @@ h2{
     text-align: center;
 }
 
-ul #menu{
+#menus {
+    float: left;
+    height: auto;
+    width: auto;
+    display: table;
+  }
+
+ul #menus{
     margin:0px; 
     padding: 0px;
     list-style-type: none;
     width: 100%;
+    
 }
 
 ul li a{
@@ -58,10 +71,12 @@ ul li{
     display: block;
     opacity:.6;
     border: 2px solid #285189;
+    
 }
 
 ul li a:hover{
     background-color:orange;
+
 }
 ul li ul li{
     display: none;
@@ -81,6 +96,25 @@ font-size: 0.8em;
 padding: 15px 5px;
 height: calc(5% - 35px); 
 
+}
+
+form{
+    width: 450px;
+    margin: auto;
+    background: rgba(0, 0,0,0.4);
+    padding: 10px 20px;
+    box-sizing: border-box;
+    margin-top: 20px;
+    border-radius: 20px;
+}
+
+input, textarea, select{
+
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 7px;
+    box-sizing: border-box;
+    border: none;
 }
 
 
@@ -241,15 +275,81 @@ tr:nth-child(odd) {
     tr:hover{background-color:#999;}
 
 button {
-    background-color: #ccccb3; 
+    background-color: #31384a;
     border: none;
-    color: black;
-    padding: 10px 20px;
+    color: #fff;
+    padding: 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 12px;
     margin: 4px 2px;
     cursor: pointer;
-    border-radius: 8px;
+    border-radius: 10px;
+}
+
+
+@media only screen and (min-width: 150px) and (max-width: 600px){
+
+    .body{
+    
+    width: 90%;
+   font-size: 95%;}
+    
+
+   ul #menus{
+   width: 100%;
+
+  
+    
+    }
+
+    ul li a{
+
+        text-decoration: none;
+        color:white;
+           
+   
+        
+    }
+
+    ul li{
+        width: 100%;
+        margin: 0 auto;  
+       
+         }
+
+    ul li a:hover{
+        background-color:orange;
+
+    }
+
+    form{
+
+        width: 100%;
+    }
+    
+
+#conteudoPaginaEquipa{
+    width: 90%;
+}
+
+
+#divEquipa{
+    width: 90%;
+}
+
+
+#divTabelaJogadores{
+    width: 90%;
+}
+
+
+#divTabelaClubes{
+    width: 90%;
+}
+
+#formularioJogador{
+   width: 90%;}
+
 }
