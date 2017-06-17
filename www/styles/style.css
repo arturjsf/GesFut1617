@@ -32,6 +32,19 @@ a {
     display: table;
 }
 
+#conteudoHome{
+    display: none;
+    width: 100%;
+    float: left;
+}
+
+#conteudoPagina {
+    float: left;
+    height: auto;
+    width: 98%;
+    margin: 1%;
+}
+
 h1{
     text-align: center;
 }
@@ -116,12 +129,7 @@ tr{transition:all .25s ease-in-out}
 
 img{ cursor: pointer;}
 
-#conteudoPagina {
-    float: left;
-    height: auto;
-    width: 98%;
-    margin: 1%;
-}
+
 
 #conteudoPaginaJogador{
     display: none;
@@ -136,17 +144,12 @@ img{ cursor: pointer;}
 }
 
 
-#divClube{
+#divEquipa{
     float: left;
     margin-top: 50px;
     background-color: #999;
     height: auto;
     width: 100%;
-}
-#conteudoHome{
-    display: none;
-    width: 100%;
-    float: left;
 }
 
 
@@ -167,6 +170,14 @@ img{ cursor: pointer;}
     font-weight: bold;
 } 
 
+#divErrosCriacaoTaca{
+    clear: left;
+    float: center; 
+    display: none; 
+    color: red; 
+    font-weight: bold;
+} 
+
 #divTabelaJogadores{
     float: left; 
     display: none;
@@ -174,6 +185,12 @@ img{ cursor: pointer;}
 }
 
 #divTabelaClubes{
+    float: left; 
+    display: none;
+    width: 100%;
+}
+
+#divTabelaTacas{
     float: left; 
     display: none;
     width: 100%;
@@ -187,22 +204,6 @@ img{ cursor: pointer;}
     font-weight: bold;
 }
 
-#conteudoPaginaClube{
-    display: none;
-    width: 100%;
-    float: left;
-} 
-
-#divErrosCriacaoClube{
-    clear: left;
-    float: center; 
-    display: none; 
-    color: red; 
-    font-weight: bold;
-} 
-
-
-
 #divNaoExistemClubes{ 
    clear: left;
    float: center; 
@@ -211,23 +212,18 @@ img{ cursor: pointer;}
     font-weight: bold;
 }
 
-#divEquipa{
-    float: left; 
-    display: none;
-    width: 100%;
-    
+#divNaoExistemTacas{ 
+   clear: left;
+   float: center; 
+    display: none; 
+    color: red; 
+    font-weight: bold;
 }
 
-#divMercadoJogadores{
+#divTabelaMercadoJogadores{
     float: left;
     display: none;
     width: 100%;
-}
-
-#divTabelaClube{
-    float: left;
-     display: none;
-     width: 100%;
 }
 
 #divErrosEquipa{
@@ -247,6 +243,12 @@ img{ cursor: pointer;}
     display: none;
     width: 100%;
     float: left;
+    }
+
+#divTorneio{
+display: none;
+width: 100%;
+float: left;
     }
 
 #formularioJogador{
