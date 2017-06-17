@@ -32,7 +32,7 @@ function Tacas(){
 */
 //ARRAYS DE ELEMENTOS 
 var PosicaoJogador = ["GR", "DF", "MC","AV"];
-var Paises = ["Portugal","Espanha","Argentina","Alemanha","França","Brasil","Itália","Suecia","França","Mexico"];
+var Paises = ["Portugal","Espanha","Argentina","Alemanha","França","Brasil","Italia","Suecia","França","Mexico"];
 
 
 /**
@@ -1778,10 +1778,10 @@ function getAge(dateString){
   */
 function jogadoresDefault(){
 
-        var jogador1 = new Jogador("CR7", "1985/03/25", "PTG", "185", "AV");
-        var jogador2 = new Jogador("Messi", "1989/03/25", "ARG", "150", "AV");
-        var jogador3 = new Jogador("Buffon", "1985/03/25", "ITA", "180", "GR");
-        var jogador4 = new Jogador("Ibra", "1983/03/25", "SUE", "190", "AV");
+        var jogador1 = new Jogador("CR7", "1985/03/25", "Portugal", "185", "AV");
+        var jogador2 = new Jogador("Messi", "1989/03/25", "Argentina", "150", "AV");
+        var jogador3 = new Jogador("Buffon", "1985/03/25", "Italia", "180", "GR");
+        var jogador4 = new Jogador("Ibra", "1983/03/25", "Suecia", "190", "AV");
 
             arrayJogadores.push(jogador1);
             arrayJogadores.push(jogador2);
@@ -1794,8 +1794,8 @@ function jogadoresDefault(){
 
 function clubesDefault(){
 
-        var clube1 = new Clube("Real Madrid", "RMA", "ESP", "www.real.com", " Los blancos");
-        var clube2 = new Clube("Juventus", "JUV", "ITA", "www.juve.com", " ");
+        var clube1 = new Clube("Real Madrid", "RMA", "Espanha", "www.real.com", " Los blancos");
+        var clube2 = new Clube("Juventus", "JUV", "Italia", "www.juve.com", " ");
 
 
             arrayClubes.push(clube1);
