@@ -4,16 +4,17 @@
 <head>
     <title>GesFut</title>
     <meta charset="windows-1252">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-     
-     <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
 
 </head>
-<body>
+<body class="body">
+
+    
 
     <!-- DIV TOTAL -->
     <div id="total">
+        
 
 
         <!--MENUS-->
@@ -33,17 +34,17 @@
         <div id="conteudoPagina">
 
             <!--CONTEUDO HOME-->
-            <div id="conteudoHome" style="display: none;">
+            <div id="conteudoHome">
                 <h1>welcome</h1>
             </div>
 
            
            <!-- CONTEUDO JOGADOR -->
-            <div id="conteudoPaginaJogador" style="display: none;">
+            <div id="conteudoPaginaJogador">
                   <h2>Formulário Jogador</h2>
                 
                  <!--FORMULARIO JOGADOR-->
-                <div style="float: left;">
+                <div id="formularioJogador">
 
                     <form name="formJogador">
                         <label for="nomeJogador">Nome</label>
@@ -54,7 +55,7 @@
 
                         <label for="paisJogador">Pais</label>
                         <select id="paisJogador" name="paisJogador">
-                            <option selected="selected">Introduza pais</option>
+                        <option selected="selected">Introduza pais</option>
                         </select>
 
                         <label for="altura">Altura (Cm)</label>
@@ -69,20 +70,20 @@
                     </form>
 
                     <!-- ERRO JOGADOR -->
-                    <div id="divErrosCriacaoJogador" style="float: left; display: none; color: red; font-weight: bold;"></div>
+                    <div id="divErrosCriacaoJogador"></div>
                 </div>
 
                 
 
 
                 <!--TABELA JOGADORES-->
-                <div id="divTabelaJogadores" style="float: left; display: none;">                      
+                <div id="divTabelaJogadores">                      
                     <table id="tabelaJogadores" border="1"></table>                
                 </div>
 
 
                 <!-- ERRO JOGADOR -->
-                <div id="divNaoExistemJogadores" style="float: left; display: none; color: red; font-weight: bold;">
+                <div id="divNaoExistemJogadores">
                     Lista de jogadores vazia. Adiciona um jogador!
                 </div>
 
@@ -90,6 +91,7 @@
             </div>
 
 
+<<<<<<< HEAD
             <!--CONTEUDO CLUBE-->
             <div id="conteudoPaginaClube" style="display: none;">
                 <h2>Formulário Clube</h2>
@@ -97,8 +99,17 @@
                 
                  <!--FORMULARIO CLUBE-->
                 <div style="float: left;">
+=======
+            <!--CONTEUDO Clube-->
+            <div id="conteudoPaginaClube">
+                <h2>Formulário Clube</h2>
 
-                    <form name="formClube">
+                
+                 <!--FORMULARIO Clube-->
+                <div id="formularioClube">
+>>>>>>> cb2d20b928702c063ec8c94949dc771259363dbd
+
+                    <form name="formularioClube">
                         <label for="nomeClube">Nome</label>
                         <input required type="text" id="nomeClube" name="nomeClube" placeholder="Introduza o nome do Clube">
 
@@ -121,29 +132,39 @@
 
                     
                     <!-- ERRO Clube -->
-                    <div id="divErrosCriacaoClube" style="float: left; display: none; color: red; font-weight: bold;"></div>
+                    <div id="divErrosCriacaoClube"></div>
                 </div>
 
                 
+<<<<<<< HEAD
                 <!--TABELA CLUBE-->
                 <div id="divTabelaClubes" style="float: left; display: none;">                      
+=======
+                <!--TABELA Clube-->
+                <div id="divTabelaClubes">                      
+>>>>>>> cb2d20b928702c063ec8c94949dc771259363dbd
                     <table id="tabelaClubes" border="1"></table>
 
-                       <h5>(Clique numa equipa para adicionar jogadores)</h5>
+                       <h5>(Clique num Clube para adicionar jogadores)</h5>
                 </div>
 
 
+<<<<<<< HEAD
                 <!-- ERRO CLUBE -->
                 <div id="divNaoExistemClubes" style="float: left; display: none; color: red; font-weight: bold;">
+=======
+                <!-- ERRO Clube -->
+                <div id="divNaoExistemClubes">
+>>>>>>> cb2d20b928702c063ec8c94949dc771259363dbd
                     Lista de Clubes vazia. Adiciona um Clube!
                 </div>
 
 
-                <hr>
+               
 
                  <!--CONTEUDO ADD JOGADOR AO CLUBE-->
                 
-                  <div id="divEquipa" style="float: left; display: none;">
+                  <div id="divClube">
                     <h2>Adicionar jogadores</h2>
 
                     <!--TABELA MERCADO DE JOGADORES LIVRES-->
@@ -155,18 +176,35 @@
                     <!-- ERRO JOGADOR/Clube -->
                         <div id="divErrosEquipa" style="float: left; display: none; color: red; font-weight: bold;"></div>
 
+<<<<<<< HEAD
+=======
+                  <div id="divMercadoJogadores">
+>>>>>>> cb2d20b928702c063ec8c94949dc771259363dbd
 
                    <!--TABELA DE JOGADORES POR Clube-->
 
                    <div style="float: right;">
                       <h2>Equipa</h2>  
 
+<<<<<<< HEAD
                    
                     <div id="divTabelaEquipa" style="display: none; float: right;">                         
                         <table id="tabelaEquipa" border="1"></table>                         
                      </div>    
                         
                 </div>                     
+=======
+                   <!--TABELA DE JOGADORES POR Clube-->
+                    <div id="divTabelaClubes">
+                       <h2>Clube</h2>        
+                        <table id="tabelaClube" border="1"></table>
+                     </div>    
+                         <!-- ERRO JOGADOR/Clube -->
+                        <div id="divErrosClube">
+                            Clube sem jogadores!
+                        </div>
+                                
+>>>>>>> cb2d20b928702c063ec8c94949dc771259363dbd
                                                             
                   </div>                           
 
@@ -235,13 +273,22 @@
 
 
             <!--CONTEUDO LIGA-->
-            <div id="conteudoPaginaLiga" style="display: none;">
+            <div id="conteudoPaginaLiga">
                 <h1>Liga</h1>
             </div>
  
 
 
+<<<<<<< HEAD
          </div>
+=======
+            
+            <!--CONTEUDO TACA-->
+            <div id="conteudoPaginaTaca">
+                <h1>Taca</h1>
+            </div>
+        </div>
+>>>>>>> cb2d20b928702c063ec8c94949dc771259363dbd
 	
     </div>
 
@@ -251,9 +298,11 @@
 	<footer class="mainFooter">
 
 		<address> 
-			Copyright &copy; Artur Ferreira, Filipe Montijo - Programacao para a Internet 2017
-			<a href="mailto:arturjsf@outlook.pt" title="mail to:" target="_blank">arturjsf@outlook.pt</a>
-            <a href="mailto:filipe-montijo@outlook.pt" title="mail to:" target="_blank">filipe-montijo@outlook.pt</a>
+			Copyright &copy; Artur Ferreira- <a href="mailto:arturjsf@outlook.pt" title="mail to:" target="_blank">arturjsf@outlook.pt</a>,
+             Jorge Duarte- <a href="mailto:filipemontijo@gmail.com" title="mail to:" target="_blank">filipemontijo@gmail.com</a> 
+             - Programacao para a Internet 2017
+			
+            
 		</address>
 	</footer>
 

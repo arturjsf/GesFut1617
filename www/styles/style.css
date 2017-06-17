@@ -1,20 +1,65 @@
-.formJogador{margin-top: 200px; margin-left: 50px}
-.formJogador input{display: inline; margin-bottom: 10px}
-tr{transition:all .25s ease-in-out}
+html, body {
+    margin: 0;
+    padding: 0;
+    background-image: url("/images/futebol.jpg");
+    background-size: 100vw 100vh;
+    background-attachment: fixed;
+    font-size: 87,5%;
+    font-family: Arial, Helvetica, Sans-Serif;
+    line-height: 1.5;
+    height: 100%;
+    width: 100%;
+    
+}
 
-tr:hover{background-color:#999;}
+.body{
+    margin: 0 auto;
+    width: 100%;
+    clear: both;
+    float: left;
+}
 
-img{ cursor: pointer;}
+a {
+    text-decoration: none;
+}
 
 
-ul{
-    margin:0px; padding: 0px;
+#total {
+    margin: 0 auto;
+    border: 5px solid #000;
+    width: calc(90% - 10px); 
+    height: calc(97% - 10px);
+    display: table;
+}
+
+h1{
+    text-align: center;
+}
+
+h2{
+    text-align: center;
+}
+
+#menus {
+    float: left;
+    height: auto;
+    width: auto;
+    display: table;
+  }
+
+ul #menus{
+    margin:0px; 
+    padding: 0px;
+    list-style-type: none;
+    width: 100%;
+    
 }
 
 ul li a{
 
     text-decoration: none;
     color:white;
+    
 }
 
 ul li{
@@ -28,76 +73,301 @@ ul li{
     display: block;
     opacity:.6;
     border: 2px solid #285189;
+    
 }
 
 ul li a:hover{
     background-color:orange;
-}
-ul li ul li{
-    display: none;
-}
 
-ul li:hover ul li{
-    display: block;
 }
+footer
+{
+clear: both;
+text-align: right;
+color: #FFF;
+font-size: 0.8em;
+padding: 15px 5px;
+height: calc(5% - 35px); 
 
-
-#total {
-    margin: 0px auto;
-    border: 5px solid #000;
-    height: 98%;
-    width: 88%;
-    display: table;
 }
 
-
-#menu {
-    float: left;
-    height: auto;
-    width: auto;
-    display: table;
+form{
+    width: 450px;
+    margin: auto;
+    background: rgba(0, 0,0,0.4);
+    padding: 10px 20px;
+    box-sizing: border-box;
+    margin-top: 20px;
+    border-radius: 20px;
+    float: center;
 }
+
+input, textarea, select{
+
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 7px;
+    box-sizing: border-box;
+    border: none;
+}
+
+
+tr{transition:all .25s ease-in-out}
+
+img{ cursor: pointer;}
 
 #conteudoPagina {
     float: left;
     height: auto;
-    width: 80%;
-    background-color: #fff;
+    width: 98%;
     margin: 1%;
 }
 
-#conteudoPaginaEquipa{
-    float: left;
-    background-color: #e7e7e7;
-    height: auto;
+#conteudoPaginaJogador{
+    display: none;
     width: 100%;
+    float: left;
+}
+
+#conteudoPaginaClube{
+    display: none;
+    width: 100%;
+    float: left;
 }
 
 
-#divEquipa{
+#divClube{
     float: left;
     margin-top: 50px;
     background-color: #999;
     height: auto;
     width: 100%;
 }
+#conteudoHome{
+    display: none;
+    width: 100%;
+    float: left;
+}
 
 
-html, body {
-    margin: 0px;
-    padding: 0px;
-    background-image: url("/images/futebol.jpg");
-    background-size: cover;
-    font-family: Arial, Helvetica, Sans-Serif;
-    height: 100%;
+#divErrosCriacaoJogador{
+     clear: left;
+    float: center; 
+    display: none; 
+    color: red; 
+    font-weight: bold;
     width: 100%;
 }
 
-#divTabelaClubes tr{cursor: pointer;}
+#divErrosCriacaoClube{
+    clear: left;
+    float: center; 
+    display: none; 
+    color: red; 
+    font-weight: bold;
+} 
+
+#divTabelaJogadores{
+    float: left; 
+    display: none;
+    width: 100%;
+}
+
+#divTabelaClubes{
+    float: left; 
+    display: none;
+    width: 100%;
+}
+
+#divNaoExistemJogadores{
+    clear: left;
+    float: center; 
+    display: none; 
+    color:red; 
+    font-weight: bold;
+}
+
+#conteudoPaginaClube{
+    display: none;
+    width: 100%;
+    float: left;
+} 
+
+#divErrosCriacaoClube{
+    clear: left;
+    float: center; 
+    display: none; 
+    color: red; 
+    font-weight: bold;
+} 
+
+
+
+#divNaoExistemClubes{ 
+   clear: left;
+   float: center; 
+    display: none; 
+    color: red; 
+    font-weight: bold;
+}
+
+#divEquipa{
+    float: left; 
+    display: none;
+    width: 100%;
+    
+}
+
+#divMercadoJogadores{
+    float: left;
+    display: none;
+    width: 100%;
+}
+
+#divTabelaClube{
+    float: left;
+     display: none;
+     width: 100%;
+}
+
+#divErrosEquipa{
+    float: center; 
+    display: none; 
+    color: red; 
+    font-weight: bold
+}
+
+#conteudoPaginaLiga{
+    display: none;
+    width: 100%;
+    float: left;
+}
+
+#conteudoPaginaTaca{
+    display: none;
+    width: 100%;
+    float: left;
+    }
+
+#formularioJogador{
+    float: left;
+    width: 100%;
+   
+}
+
+#formularioClube{
+    float: left;
+    width: 100%;
+}
+
+td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 90%;
+    margin-top:3%;
+    margin-right:auto; 
+    margin-left:auto;
+}
+
+
+
+th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+    background-color: #778899;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;}
+
+tr:nth-child(odd) {
+    background-color: #fff;}
+
+    tr:hover{background-color:#999;}
+
+button {
+    background-color: #31384a;
+    border: none;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
 
 #divTabelaTacas tr{cursor: pointer;}
 
+#divTabelaClubes tr{cursor: pointer;}
 
 
 
 
+@media only screen and (min-width: 150px) and (max-width: 600px){
+
+    .body{
+    
+    width:100%;
+   font-size: 95%;}
+    
+
+   ul #menus{
+   width: 100%;
+
+  
+    
+    }
+
+    ul li{
+        width: 100%;
+        margin: 0 auto;  
+       
+         }
+
+    form{
+
+        width: 100%;
+    }
+    
+#conteudoPaginaJogador{
+    width: 90%;
+}
+
+
+#conteudoPaginaClube{
+    width: 90%;
+}
+
+
+#divEquipa{
+    width: 90%;
+}
+
+
+#divTabelaJogadores{
+    width: 90%;
+    
+}
+
+
+#divTabelaClubes{
+    width: 90%;
+}
+
+#formularioJogador{
+   width: 90%;}
+}
+
+#formularioClube{
+   width: 90%;}

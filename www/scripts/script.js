@@ -32,7 +32,7 @@ function Tacas(){
 */
 //ARRAYS DE ELEMENTOS 
 var PosicaoJogador = ["GR", "DF", "MC","AV"];
-var Paises = ["PTG","ESP","ARG","ALE","FRA","BRA","ITA","SUE","FRA","MEX"];
+var Paises = ["Portugal","Espanha","Argentina","Alemanha","França","Brasil","Itália","Suecia","França","Mexico"];
 
 
 /**
@@ -47,9 +47,11 @@ var Paises = ["PTG","ESP","ARG","ALE","FRA","BRA","ITA","SUE","FRA","MEX"];
  * @param {*} posicao 
  * @param {*} altura 
  */
+
+
 function Jogador(nomeJogador, data, paisJogador, altura, posicao) {
     this.idJogador = contadorJogador++;
-    this.nomeJogador = nomeJogador;
+    this.nomeJogador = nomeJogador ? nomeJogador.toString() : ""; //o toString era desnecessário pois o argumento vem de uma string. Mas assim fica robusta em relação a outras chamadas
     this.data = data;
     this.paisJogador = paisJogador;  
     this.altura = altura;
@@ -75,7 +77,7 @@ function Jogador(nomeJogador, data, paisJogador, altura, posicao) {
  */
 function Clube(nomeClube, acr, paisClube, url, descricao) {
     this.idClube = contadorClube++;
-    this.nomeClube = nomeClube;
+    this.nomeClube = nomeClube ? nomeClube.toString() : "";
     this.acr = acr;
     this.paisClube = paisClube;
     this.url = url;
