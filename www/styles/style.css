@@ -9,12 +9,14 @@ html, body {
     line-height: 1.5;
     height: 100%;
     width: 100%;
+    
 }
 
 .body{
     margin: 0 auto;
     width: 100%;
     clear: both;
+    float: left;
 }
 
 a {
@@ -106,6 +108,7 @@ form{
     box-sizing: border-box;
     margin-top: 20px;
     border-radius: 20px;
+    float: center;
 }
 
 input, textarea, select{
@@ -140,11 +143,16 @@ img{ cursor: pointer;}
     margin: 1%;
 }
 
-#conteudoPaginaEquipa{
-    float: left;
-    background-color: #e7e7e7;
-    height: auto;
+#conteudoPaginaJogador{
+    display: none;
     width: 100%;
+    float: left;
+}
+
+#conteudoPaginaEquipa{
+    display: none;
+    width: 100%;
+    float: left;
 }
 
 
@@ -158,12 +166,9 @@ img{ cursor: pointer;}
 #conteudoHome{
     display: none;
     width: 100%;
+    float: left;
 }
 
-#conteudoPaginaJogador{
-    display: none;
-    width: 100%;
-}
 
 #divErrosCriacaoJogador{
     float: center; 
@@ -172,6 +177,8 @@ img{ cursor: pointer;}
     font-weight: bold;
     width: 100%;
 }
+
+
 
 #divTabelaJogadores{
     float: left; 
@@ -189,10 +196,11 @@ img{ cursor: pointer;}
 #conteudoPaginaClube{
     display: none;
     width: 100%;
+    float: left;
 } 
 
 #divErrosCriacaoClube{
-    float: center;
+    float: center; 
     display: none; 
     color: red; 
     font-weight: bold;
@@ -205,7 +213,7 @@ img{ cursor: pointer;}
 }
 
 #divNaoExistemClubes{ 
-    float: center;
+   float: center; 
     display: none; 
     color: red; 
     font-weight: bold;
@@ -240,18 +248,25 @@ img{ cursor: pointer;}
 #conteudoPaginaLiga{
     display: none;
     width: 100%;
+    float: left;
 }
 
 #conteudoPaginaTaca{
     display: none;
     width: 100%;
+    float: left;
     }
 
 #formularioJogador{
     float: left;
     width: 100%;
+    float: left;
 }
 
+#formularioClube{
+    float: left;
+    width: 100%;
+}
 
 td {
     border: 1px solid #dddddd;
@@ -340,10 +355,15 @@ button {
         width: 100%;
     }
     
-
-#conteudoPaginaEquipa{
+#conteudoPaginaJogador{
     width: 90%;
 }
+
+
+#conteudoPaginaClube{
+    width: 90%;
+}
+
 
 
 #divEquipa{
