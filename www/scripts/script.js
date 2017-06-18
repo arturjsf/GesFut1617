@@ -32,7 +32,7 @@ function Tacas(){
 */
 //ARRAYS DE ELEMENTOS 
 var PosicaoJogador = ["GR", "DF", "MC","AV"];
-var Paises = ["Portugal","Espanha","Argentina","Alemanha","França","Brasil","Italia","Suecia","França","Mexico"];
+var Paises = ["Portugal","Espanha","Argentina","Holanda","Alemanha","França","Brasil","Italia","Suecia","França","Uruguai","Mexico","Grecia", "Cabo Verde"];
 
 
 /**
@@ -1747,22 +1747,120 @@ function getAge(dateString){
   */
 function jogadoresDefault(){
  
-        var arrayJogadoresDefault = [new Jogador("Cristiano Ronaldo", "1985/03/25", "Portugal", "185", "AV"), 
-                                    new Jogador("Messi", "1989/03/25", "Argentina", "150", "AV"),
-                                    new Jogador("Messi", "1989/03/25", "Argentina", "150", "AV"),
-                                    new Jogador("Buffon", "1985/03/25", "Italia", "180", "GR"),
-                                    new Jogador("Ibra", "1983/03/25", "Suecia", "190", "DF"),
-                                    new Jogador("ryu", "1983/03/25", "Suecia", "190", "DF"),
-                                    new Jogador("Ibra", "1983/03/25", "Portugal", "190", "DF"),
-                                    new Jogador("josh", "1983/03/25", "Portugal", "190", "DF"),
-                                    new Jogador("bern", "1983/03/25", "Portugal", "190", "DF"),
-                                    new Jogador("juan", "1983/03/25", "Portugal", "190", "MC"),
-                                    new Jogador("ze", "1983/03/25", "Portugal", "190", "MC"),
-                                    new Jogador("joao", "1983/03/25", "Portugal", "190", "MC"),
-                                    new Jogador("rui", "1983/03/25", "Portugal", "190", "MC"),
-                                    new Jogador("xico", "1983/03/25", "Portugal", "190", "DF"),
-                                    new Jogador("mike", "1983/03/25", "Portugal", "190", "AV"),
-                                    new Jogador("Ibra", "1983/03/25", "Portugal", "190", "AV"),];
+        var arrayJogadoresDefault = [new Jogador("Ederson Moraes", "1985/03/25", "Brasil", "188", "GR"), 
+                                    new Jogador("Álex Grimaldo", "1995-09-20", "Espanha", "170", "DF"),
+                                    new Jogador("Victor Lindelöf", "1994-07-17", "Suecia", "187", "DF"),
+                                    new Jogador("Luisão", "1981-02-13", "Brasil", "193", "DF"),
+                                    new Jogador("Ljubomir Fejsa", "1988-08-14", "Grecia", "174", "MC"),
+                                    new Jogador("Pizzi", "1989-10-06", "Portugal", "176", "MC"),
+                                    new Jogador("André Horta", "1996-11-07", "Portugal", "174", "MC"),
+                                    new Jogador("Andreas Samaris", "1989-06-13", "Grecia", "189", "MC"),
+                                    new Jogador("Kostas Mitroglou", "1988-03-12", "Grecia", "188", "AV"),
+                                    new Jogador("Jonas", "1984-04-01", "Brasil", "181", "AV"),
+                                    new Jogador("Iker Casillas", "1981-05-20", "Espanha", "182", "GR"),
+                                    new Jogador("Maxi Pereira", "1984-06-08", "Uruguai", "173", "DF"),
+                                    new Jogador("Iván Marcano", "1987-06-23", "Espanha", "189", "DF"),
+                                    new Jogador("Miguel Layún", "1988-06-25", "México", "179", "DF"),
+                                    new Jogador("Felipe", "1989-05-16", "Brasil", "191", "DF"),
+                                    new Jogador("Rúben Neves", "1997-03-13", "Portugal", "180", "MC"),
+                                    new Jogador("Danilo Pereira", "1991-09-09", "Portugal", "188", "MC"),
+                                    new Jogador("Óliver Torres", "1994-11-10", "Espanha", "174", "MC"),
+                                    new Jogador("André André", "1989-08-26", "Portugal", "175", "MC"),
+                                    new Jogador("André Silva", "1995-11-06", "Portugal", "185", "AV"),
+                                    new Jogador("Soares", "1991-01-17", "Brasil", "187", "AV"),
+                                    new Jogador("Rui Patrício", "1988-02-15", "Portugal", "190", "GR"),
+                                    new Jogador("Ezequiel Schelotto", "1989-05-23", "Argentina", "187", "DF"),
+                                    new Jogador("Jefferson", "1988-07-05", "Brasil", "176", "DF"),
+                                    new Jogador("Sebastián Coates", "1990-10-07", "Uruguai", "196", "DF"),
+                                    new Jogador("Rúben Semedo", "1992-04-07", "Cabo Verde", "189", "DF"),
+                                    new Jogador("William Carvalho", "1992-04-07", "Portugal", "188", "MC"),
+                                    new Jogador("Adrien Silva", "1989-03-15", "Portugal", "175", "MC"),
+                                    new Jogador("Bruno César", "1988-11-03", "Brasil", "178", "MC"),
+                                    new Jogador("Alan Nahuel Ruiz", "1993-08-19", "Argentina", "183", "MC"),
+                                    new Jogador("Bas Dost", "1989-05-31", "Holanda", "196", "AV"),
+                                    new Jogador("Gelson Martins", "1995-05-11", "Portugal", "173", "AV"),                                                                        
+                                    new Jogador("Fabio", "1988-02-15", "Portugal", "190", "GR"),
+                                    new Jogador("Pablo", "1995-09-20", "Espanha", "170", "DF"),
+                                    new Jogador("Victor", "1994-07-17", "Suecia", "187", "DF"),
+                                    new Jogador("Manso", "1981-02-13", "Brasil", "193", "DF"),
+                                    new Jogador("Ljubomir", "1988-08-14", "Grecia", "174", "MC"),
+                                    new Jogador("Filipe", "1989-10-06", "Portugal", "176", "MC"),
+                                    new Jogador("André", "1996-11-07", "Portugal", "174", "MC"),
+                                    new Jogador("Andreas", "1989-06-13", "Grecia", "189", "MC"),
+                                    new Jogador("Kostas", "1988-03-12", "Grecia", "188", "AV"),
+                                    new Jogador("Kleber", "1984-04-01", "Brasil", "181", "AV"),
+                                    new Jogador("Iker", "1981-05-20", "Espanha", "182", "GR"),
+                                    new Jogador("Pereira", "1984-06-08", "Uruguai", "173", "DF"),
+                                    new Jogador("Iván", "1987-06-23", "Espanha", "189", "DF"),
+                                    new Jogador("Miguel", "1988-06-25", "México", "179", "DF"),
+                                    new Jogador("Carlão", "1989-05-16", "Brasil", "191", "DF"),
+                                    new Jogador("Neves", "1997-03-13", "Portugal", "180", "MC"),
+                                    new Jogador("Pereira", "1991-09-09", "Portugal", "188", "MC"),
+                                    new Jogador("Óliver", "1994-11-10", "Espanha", "174", "MC"),
+                                    new Jogador("André", "1989-08-26", "Portugal", "175", "MC"),
+                                    new Jogador("Silva", "1995-11-06", "Portugal", "185", "AV"),
+                                    new Jogador("Ronaldo", "1991-01-17", "Brasil", "187", "AV"),
+                                    new Jogador("Miguel", "1988-02-15", "Portugal", "190", "GR"),
+                                    new Jogador("Ezequiel", "1989-05-23", "Argentina", "187", "DF"),
+                                    new Jogador("Doriva", "1988-07-05", "Brasil", "176", "DF"),
+                                    new Jogador("Sebastián", "1990-10-07", "Uruguai", "196", "DF"),
+                                    new Jogador("Pedro", "1992-04-07", "Cabo Verde", "189", "DF"),
+                                    new Jogador("Carvalho", "1992-04-07", "Portugal", "188", "MC"),
+                                    new Jogador("Adrien", "1989-03-15", "Portugal", "175", "MC"),
+                                    new Jogador("Bruno", "1988-11-03", "Brasil", "178", "MC"),
+                                    new Jogador("Alan", "1993-08-19", "Argentina", "183", "MC"),
+                                    new Jogador("Klivert", "1989-05-31", "Holanda", "196", "AV"),
+                                    new Jogador("Martins", "1995-05-11", "Portugal", "173", "AV"),
+                                    new Jogador("Pablo Escobar", "1979-05-20", "Espanha", "182", "GR"),
+                                    new Jogador("Maci", "1994-06-08", "Uruguai", "173", "DF"),
+                                    new Jogador("Iván Pedro", "1985-06-23", "Espanha", "189", "DF"),
+                                    new Jogador("Miguel Chicaro", "1986-06-25", "México", "179", "DF"),
+                                    new Jogador("Ronaldão", "1987-05-16", "Brasil", "191", "DF"),
+                                    new Jogador("Jorge Couto", "1994-03-13", "Portugal", "180", "MC"),
+                                    new Jogador("Rafael Joaquim", "1981-09-09", "Portugal", "188", "MC"),
+                                    new Jogador("Raul ", "1994-11-10", "Espanha", "174", "MC"),
+                                    new Jogador("Fernando ", "1989-08-26", "Portugal", "175", "MC"),
+                                    new Jogador("Carlos", "1999-11-06", "Portugal", "185", "AV"),
+                                    new Jogador("Fabiano", "1999-01-17", "Brasil", "187", "AV"),
+                                    new Jogador("Ramos", "1984-05-20", "Espanha", "179", "GR"),
+                                    new Jogador("Jão Pedro", "1988-06-08", "Portugal", "173", "DF"),
+                                    new Jogador("Joan Carlos", "1987-06-23", "Espanha", "189", "DF"),
+                                    new Jogador("Ricarso", "1988-06-25", "Portugal", "179", "DF"),
+                                    new Jogador("Carlinhos", "1989-05-16", "Portugal", "191", "DF"),
+                                    new Jogador("Zequinha", "1999-03-13", "Portugal", "180", "MC"),
+                                    new Jogador("Fábio Cardoso", "1991-09-09", "Portugal", "188", "MC"),
+                                    new Jogador("Luis Felipe", "1994-11-10", "Espanha", "174", "MC"),
+                                    new Jogador("Nuno Pinto", "1989-08-26", "Portugal", "175", "MC"),
+                                    new Jogador("André Pedrosa", "1995-11-06", "Portugal", "185", "AV"),
+                                    new Jogador("Andre Sousa", "1991-01-17", "Brasil", "187", "AV"),
+                                    new Jogador("Lukas Raeder", "1988-02-15", "Alemão", "190", "GR"),
+                                    new Jogador("João Diogo", "1989-05-23", "Argentina", "187", "DF"),
+                                    new Jogador("Dinis Almeida", "1988-07-05", "Brasil", "176", "DF"),
+                                    new Jogador("Gonçalo Silva", "1990-10-07", "Uruguai", "196", "DF"),
+                                    new Jogador("Mica Pinto", "1992-04-07", "Cabo Verde", "189", "DF"),
+                                    new Jogador("André Sousa", "1992-04-07", "Portugal", "188", "MC"),
+                                    new Jogador("Miguel Rosa", "1989-03-15", "Portugal", "175", "MC"),
+                                    new Jogador("António José ", "1988-11-03", "Brasil", "178", "MC"),
+                                    new Jogador("Celis", "1993-08-19", "Argentina", "183", "MC"),
+                                    new Jogador("Falaye Sacko", "1989-05-31", "Holanda", "196", "AV"),
+                                    new Jogador("Moussa Marega", "1995-05-11", "Portugal", "173", "AV"),
+                                    new Jogador("Raphael Dias", "1979-05-20", "Espanha", "182", "GR"),
+                                    new Jogador("Ricardo Ferreira", "1994-06-08", "Uruguai", "173", "DF"),
+                                    new Jogador("Deyvison", "1985-06-23", "Espanha", "189", "DF"),
+                                    new Jogador("Alex Soares", "1986-06-25", "México", "179", "DF"),
+                                    new Jogador("Cassio", "1987-05-16", "Brasil", "191", "DF"),
+                                    new Jogador("Pedrinho", "1994-03-13", "Portugal", "180", "MC"),
+                                    new Jogador("Pedro Moreira", "1981-09-09", "Portugal", "188", "MC"),
+                                    new Jogador("Bruno Teles", "1994-11-10", "Espanha", "174", "MC"),
+                                    new Jogador("António José  ", "1989-08-26", "Portugal", "175", "MC"),
+                                    new Jogador("Fábinho Espinho", "1999-11-06", "Portugal", "185", "AV"),
+                                    new Jogador("Rochinha", "1999-01-17", "Brasil", "187", "AV"),
+                                    new Jogador("Ricardo Pereira", "1994-06-08", "Uruguai", "173", "DF"),
+                                    new Jogador("Actor Riga", "1985-06-23", "Espanha", "189", "DF"),
+                                    new Jogador("Pedrito Soares", "1986-06-25", "México", "179", "DF"),
+                                    new Jogador("Bebeto", "1987-05-16", "Brasil", "191", "DF"),
+                                    new Jogador("João Carlos", "1994-03-13", "Portugal", "180", "MC"),
+                                    new Jogador("Cristi Peres", "1983/03/25", "Mexico", "190", "AV"),];
 
 
         for (var index = 0; index < arrayJogadoresDefault.length; index++) {
@@ -1777,15 +1875,22 @@ function jogadoresDefault(){
 
 function clubesDefault(){
 
-        var clube1 = new Clube("Real Madrid", "RMA", "Espanha", "www.real.com", " Los blancos");
-        var clube2 = new Clube("Juventus", "JUV", "Italia", "www.juve.com", " ");
-        var clube3 = new Clube("Bayern", "BAY", "Alemanha", "www.bayern.com", " ");
-        var clube4 = new Clube("Barcelona", "BAR", "Espanha", "www.barca.com", " ");
+        var arrayClubesDefault = [new Clube("Benfica", "SLB", "Portugal", "www.slb.com", " Glorioso"),
+                                 new Clube("Porto", "FCP", "Portugal", "www.fcp.pt", "Curruptos "),
+                                 new Clube("Sporting", "SCP", "Portugal", "www.scp.pt", "Para o ano... "),
+                                 new Clube("Braga", "SCB", "Portugal", "www.braga.pt", "Guerreiros "),
+                                 new Clube("Boavista", "BFC", "Portugal", "www.bfc.pt", "Xadres "),
+                                 new Clube("Belenenses", "FCB", "Portugal", "www.fcb.pt", "Restelo "),
+                                 new Clube("Guimaraes", "FCG", "Portugal", "www.fcg.pt", "Coração de Portugal "),
+                                 new Clube("Maritimo", "MFC", "Portugal", "www.mfc.pt", "Insolares "),
+                                 new Clube("Estoril", "EFC", "Portugal", "www.efc.pt", "Linha "),
+                                 new Clube("Vitoria Setubal", "VS", "Portugal", "www.vs.pt", "Sadinos "),];
 
-            arrayClubes.push(clube1);
-            arrayClubes.push(clube2);
-            arrayClubes.push(clube3);
-            arrayClubes.push(clube4);
+        for (var index = 0; index < arrayClubesDefault.length; index++) {
+         
+                arrayClubes.push(arrayClubesDefault[index]);
+            
+        }
 
             criarTabelaClubes();
 }
