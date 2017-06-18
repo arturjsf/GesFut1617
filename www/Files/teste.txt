@@ -1,0 +1,11 @@
+[item]|1|Ederson Moraes|1993-08-17|Brasil|188|GR					
+[item]|2|Álex Grimaldo|1995-09-20|Espanha|170|DF					
+[item]|3|Victor Lindelöf|1994-07-17|Suecia|187|DF					
+[item]|4|Luisão|1981-02-13|Brasil|193|DF					
+[item]|5|Nélson Semedo|1993-11-16|Alemanha|179|DF					
+[item]|6|Ljubomir Fejsa|1988-08-14|Alemanha|183|MD					
+[item]|7|Pizzi|1989-10-06|Portugal|176|MD					
+[item]|8|André Horta|1996-11-07|Portugal|174|MD					
+[item]|9|Andreas Samaris|1989-06-13|Alemanha|189|MD					
+[item]|10|Jonas|1984-04-01|Brasil|181|AV					
+[item]|11|Kostas Mitroglou|1988-03-12|Alemanha|188|AV					

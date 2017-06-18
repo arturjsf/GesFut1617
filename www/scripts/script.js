@@ -663,7 +663,7 @@ function removerClube(indice) {
 
         var textoErro;
 
-        if (!existeClubeEmTaca()){
+        if (existeClubeEmTaca()){
             textoErro = document.createTextNode("O Clube já existe numa Taça!");
         }else{
             textoErro = document.createTextNode("O Clube tem jogadores associados!");
@@ -924,7 +924,7 @@ function criarTabelaEquipa(indice){
 
     //cabecalho tabela
     var caption = tabelaNova.createCaption();
-    var titulo = document.createTextNode("Lista Jogadores");
+    var titulo = document.createTextNode("Lista Jogadores" + arrayClubes[indice].nomeClube);
     caption.appendChild(titulo);
     tabelaNova.appendChild(caption);
 
@@ -1797,6 +1797,29 @@ function tacasDefault(){
             arrayTacas.push(taca1);
             criarTabelaTacas();
 }
+
+
+2
+3
+4
+5
+6
+7
+8
+9
+10
+function loadFileAsText(){
+	var fileToLoad = document.getElementById("fileToLoad").files[0];
+	var fileReader = new FileReader();
+	fileReader.onload = function(fileLoadedEvent) {
+		var textFromFileLoaded = fileLoadedEvent.target.result;
+		var texto = textFromFileLoaded;
+		listar(texto);
+	};
+	fileReader.readAsText(fileToLoad, "UTF-8");
+}
+
+
 
 
 function onLoadDefaults(){

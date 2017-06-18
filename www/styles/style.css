@@ -147,9 +147,9 @@ img{ cursor: pointer;}
 #divEquipa{
     float: left;
     margin-top: 50px;
-    background-color: #999;
     height: auto;
     width: 100%;
+    display: none;
 }
 
 
@@ -176,7 +176,14 @@ img{ cursor: pointer;}
     display: none; 
     color: red; 
     font-weight: bold;
-} 
+}
+#divNaoExistemTacas{
+    clear: left;
+    float: center; 
+    display: none; 
+    color: red; 
+    font-weight: bold;
+}
 
 #divTabelaJogadores{
     float: left; 
@@ -190,10 +197,31 @@ img{ cursor: pointer;}
     width: 100%;
 }
 
+#divTabelaEquipa{
+
+   display: none; 
+   float: right; 
+   width: 100%;
+}
+
 #divTabelaTacas{
     float: left; 
     display: none;
     width: 100%;
+}
+
+#divTabelaTorneio{
+    float: left;
+    display: none;
+    width: 100%;
+}
+
+#divTabelaMercadoJogadores{
+    float: left;
+     display: none;
+    width: 100%;
+   
+
 }
 
 #divNaoExistemJogadores{

@@ -1,0 +1,111 @@
+Id	Nome	Data- Nascimento	País	Altura	Posição					
+1	Ederson Moraes	1993-08-17	Brasil	188 Cm	Gr					
+2	Álex Grimaldo	1995-09-20	Espanha	170 cm	Df					
+3	Victor Lindelöf	1994-07-17	Suécia	187 Cm	Df					
+4	Luisão	1981-02-13	Brasil	193 Cm	Df					
+5	Nélson Semedo	1993-11-16	Cabo Verde	179 Cm	Df					
+6	Ljubomir Fejsa	1988-08-14	Sérvia	183 cm	Md					
+7	Pizzi	1989-10-06	Portugal	176 cm	Md					
+8	André Horta	1996-11-07	Portugal	174 cm	Md					
+9	Andreas Samaris	1989-06-13	Grécia	189 cm	Md					
+10	Jonas	1984-04-01	Brasil	181 cm	Av					
+11	Kostas Mitroglou	1988-03-12	Grécia	188 cm	Av					
+12	Iker Casillas	1981-05-20	Espanha	182 cm	Gr					
+13	Maxi Pereira	1984-06-08	Uruguai	173 cm	Df					
+14	Iván Marcano	1987-06-23	Espanha	189 cm	Df					
+15	Miguel Layún	1988-06-25	México	179 Cm	Df					
+16	Felipe	1989-05-16	Brasil	191 cm	Df					
+17	Rúben Neves	1997-03-13	Portugal	180 cm	Md					
+18	Danilo Pereira	1991-09-09	Portugal	188 cm	Md					
+19	Óliver Torres	1994-11-10	Espanha	174 cm	Md					
+20	André André	1989-08-26	Portugal	175 cm	Md					
+21	André Silva	1995-11-06	Portugal	185 cm	Av					
+22	Soares	1991-01-17	Brasil	187 cm	Av					
+23	Rui Patrício	1988-02-15	Portugal	190 cm	Gr					
+24	Ezequiel Schelotto	1989-05-23	Argentina	187 cm	Df					
+25	Jefferson	1988-07-05	Brasil	176 cm	Df					
+26	Sebastián Coates	1990-10-07	Uruguai	196 cm	Df					
+27	Rúben Semedo	1992-04-07	Cabo Verde	189 cm	Df					
+28	William Carvalho	1992-04-07	Portugal	187 cm	Md					
+29	Adrien Silva	1989-03-15	Portugal	175 cm	Md					
+30	Bruno César	1988-11-03	Brasil	178 cm	Md					
+31	Alan Nahuel Ruiz	1993-08-19	Argentina	183 cm	Md					
+32	Bas Dost	1989-05-31	Holanda	196 cm	Av					
+33	Gelson Martins	1995-05-11	Portugal	173 cm	Av					
+34	Douglas	1983-03-09	Brasil	188 cm	Gr					
+35	 Alexandre Pinto	1998-07-08	Portugal	187 cm	Df					
+36	Marcos André	1994-02-04	Portugal	196 cm	Df					
+37	Josué Sá	1992-06-17	Portugal	187 cm	Df					
+38	Rúben Ferreira	1990-02-17	Portugal	183 cm	Df					
+39	Rafael Miranda	1984-08-11	Brasil	179 cm	Md					
+40	António José 	1993-01-14	Portugal	166 cm	Md					
+41	Celis	1993-05-08	Colômbia	178 cm	Md					
+42	Falaye Sacko	1995-05-01	Mali	179 cm	Md					
+43	Moussa Marega	1991-04-14	Mali	183 cm	Av					
+44	Raphael Dias	1996-02-14	Brasil	176 cm	Av					
+45	Marafona	1987-05-08	Portugal	190 cm	Gr					
+46	Djavan	1987-12-31	Brasil	184 cm	Df					
+47	Ricardo Ferreira	1992-11-25	Portugal	190 cm	Df					
+48	Artur Jorge	1994-08-14	Portugal	186 cm	Df					
+49	Bruno Wilson	1996-12-27	Portugal	192 cm	Df					
+50	Didi	1994-02-03	Portugal	177 cm	Md					
+51	Bruno	1997-12-02	Portugal	179 cm	Md					
+52	Mauro	1990-10-31	Portugal	178 cm	Md					
+53	Nikola Vuk?evi?	1991-12-13	Montenegro	184 cm	Md					
+54	 Wilson Eduardo	1990-07-08	Portugal	179 cm	Av					
+55	Ricardo Horta	1994-09-15	Portugal	173 cm	Av					
+56	Eduardo Gottardi	1985-10-18	Brasil	193 cm	Gr					
+57	Deyvison	1988-10-18	Brasil	186 cm	Df					
+58	Luís Martins	1992-06-10	Portugal	177 cm	Df					
+59	Patrick	1991-01-22	Brasil	178 cm	Df					
+60	Zainadine	1988-06-24	Moçambique	178 cm	Df					
+61	Erdem ?en	1989-01-05	Bélgica	180 cm	Md					
+62	Alex Soares	1991-03-01	Portugal	179 cm	Md					
+63	Mansour	1992-04-28	Arábia Saudita	169 cm	Md					
+64	Jean Cléber	1990-04-29	Brasil	180 cm	Md					
+65	Adul Seidi	1992-11-20	Guiné-Bissau	184 CM	Av					
+66	António 	1992-07-06	Portugal	181 cm	Av					
+67	Cássio	1979-10-31	Brasil	186 cm	Gr					
+68	Bruno Teles	1985-10-18	Portugal	183 cm	Df					
+69	Tiago André	1988-10-18	Portugal	175 cm	Df					
+70	Pedrinho	1992-06-10	Portugal	180 cm	Df					
+71	Marcelo	1991-01-22	Brasil	165 cm	Df					
+72	Pedro Moreira	1990-10-07	Portugal	176 cm	Md					
+73	João Novais	1992-04-07	Portugal	173 cm	Md					
+74	Leandrinho	1992-04-07	Brasil	179 cm	Md					
+75	Tarantini	1989-03-15	Portugal	183 cm	Md					
+76	Héldon	1988-11-14	Cabo Verde	174 cm	Av					
+77	Gonçalo Paciencia	1994-08-01	Portugal	184 cm	Av					
+78	Lukas Raeder	1988-02-15	Alemanha	190 cm	Gr					
+79	Pedro Pinto	1989-05-23	Portugal	180 cm	Df					
+80	Fábio Cardoso	1988-07-05	Portugal	183 cm	Df					
+81	Luis Felipe	1990-10-07	Brasil	180 cm	Df					
+82	Nuno Pinto	1992-04-07	Portugal	177 cm	Df					
+83	André Pedrosa	1992-04-07	Portugal	176 cm	Md					
+84	Andre Sousa	1989-03-15	Portugal	179 cm	Md					
+85	Mikel Agu	1988-11-03	Nigeria	165 cm	Md					
+86	André Sousa	1993-08-19	Portugal	178 cm	Md					
+87	Albert Meyong	1980-10-19	Camarões	184 cm	Av					
+88	Edinho	1995-05-11	Portugal	182 cm	Av					
+89	Vagner	1983-03-09	Brasil	188 cm	Gr					
+90	Carlos Santos	1998-07-08	Portugal	187 cm	Df					
+91	Nuno Henrique	1994-02-04	Portugal	196 cm	Df					
+92	Tiago Mesquita	1992-06-17	Portugal	187 cm	Df					
+93	Andersson Correia	1990-02-17	Brasil	183 cm	Df					
+94	Fábinho Espinho	1984-08-11	Portugal	179 cm	Md					
+95	Rochinha	1993-01-14	Portugal	166 cm	Md					
+96	Anderson Carvalho	1993-05-08	Brasil	178 cm	Md					
+97	Carraça	1995-05-01	Portugal	179 cm	Md					
+98	Renato Santos	1991-04-14	Portugal	183 cm	Av					
+99	Iuri Medeiros	1996-02-14	Portugal	176 cm	Av					
+100	Hugo Ventura	1995-05-11	Portugal	183 cm	Gr					
+101	João Diogo	1983-03-09	Portugal	180 cm	Df					
+102	Dinis Almeida	1998-07-08	Portugal	177 cm	Df					
+103	Gonçalo Silva	1994-02-04	Portugal	176 cm	Df					
+104	Mica Pinto	1992-06-17	Portugal	179 cm	Df					
+105	Oriol Rossell	1992-04-07	Espanha	165 cm	Md					
+106	André Sousa	1992-04-07	Portugal	178 cm	Md					
+107	Miguel Rosa	1989-03-15	Portugal	183 cm	Md					
+108	Hassan Yebda	1984-05-14	Argélia	187 cm	Md					
+109	Betinho	1992-06-10	Portugal	185 cm	Av					
+110	Diogo Viana	1991-01-22	Portugal	176 cm	Av					
