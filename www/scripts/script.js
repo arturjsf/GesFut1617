@@ -1904,28 +1904,6 @@ function tacasDefault(){
 }
 
 
-2
-3
-4
-5
-6
-7
-8
-9
-10
-function loadFileAsText(){
-	var fileToLoad = document.getElementById("fileToLoad").files[0];
-	var fileReader = new FileReader();
-	fileReader.onload = function(fileLoadedEvent) {
-		var textFromFileLoaded = fileLoadedEvent.target.result;
-		var texto = textFromFileLoaded;
-		listar(texto);
-	};
-	fileReader.readAsText(fileToLoad, "UTF-8");
-}
-
-
-
 
 function onLoadDefaults(){
 
