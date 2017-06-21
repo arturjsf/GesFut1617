@@ -9,72 +9,57 @@ html, body {
     line-height: 1.5;
     height: 100%;
     width: 100%;
-    float: center;
-    
-}
+    float: center;}
 
 .body{
     margin: 0 auto;
     width: 100%;
     clear: both;
-    float: left;
-}
+    float: left;}
 
 a {
-    text-decoration: none;
-}
-
+    text-decoration: none;}
 
 #total {
     margin: 0 auto;
     border: 5px solid #000;
     width: calc(90% - 10px); 
     height: calc(97% - 10px);
-    display: table;
-}
+    display: table;}
 
 #conteudoHome{
     display: none;
     width: 100%;
-    float: left;
-}
+    float: left;}
 
 #conteudoPagina {
     float: left;
     height: auto;
     width: 98%;
-    margin: 1%;
-}
+    margin: 1%;}
 
 h1{
-    text-align: center;
-}
+    text-align: center;}
 
 h2{
-    text-align: center;
-}
+    text-align: center;}
 
 #menus {
     float: left;
     height: auto;
     width: auto;
     display: table;
-  }
+    border-radius: 20px;}
 
 ul #menus{
     margin:0px; 
     padding: 0px;
     list-style-type: none;
-    width: 100%;
-    
-}
+    width: 100%;}
 
 ul li a{
-
     text-decoration: none;
-    color:white;
-    
-}
+    color:white;}
 
 ul li{
     float:left;
@@ -86,24 +71,18 @@ ul li{
     text-align: center;
     display: block;
     opacity:.6;
-    border: 2px solid #285189;
-    
-}
+    border: 2px solid #285189;}
 
 ul li a:hover{
-    background-color:orange;
+    background-color:orange;}
 
-}
-footer
-{
+footer{
 clear: both;
 text-align: right;
 color: #FFF;
 font-size: 0.8em;
 padding: 15px 5px;
-height: calc(5% - 35px); 
-
-}
+height: calc(5% - 35px);}
 
 form{
     width: 450px;
@@ -113,266 +92,91 @@ form{
     box-sizing: border-box;
     margin-top: 20px;
     border-radius: 20px;
-    float: center;
-}
+    float: center;}
 
 input, textarea, select{
-
     width: 100%;
     margin-bottom: 10px;
     padding: 7px;
     box-sizing: border-box;
     border: none;
-}
+    border-radius: 20px;}
 
-
-tr{transition:all .25s ease-in-out}
+tr{transition:all .25s ease-in-out;}
 
 img{ cursor: pointer;}
 
-
-
-#conteudoPaginaJogador{
+#conteudoPaginaJogador, #conteudoPaginaClube{
     display: none;
     width: 100%;
-    float: left;
-}
+    float: left;}
 
-#conteudoPaginaClube{
-    display: none;
-    width: 100%;
-    float: left;
-}
-
-
-#divEquipa{
+#divEquipa, #divTorneio{
     float: left;
     margin-top: 50px;
     height: auto;
     width: 100%;
-    display: none;
-}
+    display: none;}
 
-#divTorneio{
-    float: left;
-    margin-top: 50px;
-    height: auto;
-    width: 100%;
-    display: none;
-}
 
-#divErrosCriacaoJogador{
+#divErro{
      clear: left;
     float: center; 
     display: none; 
     color: red; 
     font-weight: bold;
-    width: 100%;
-}
+    width: 100%;}
 
-#divErrosCriacaoClube{
+#divNaoExistemTacas, #divNaoExistemLigas, #divNaoExistemJogadores, #divNaoExistemClubes{
     clear: left;
     float: center; 
     display: none; 
     color: red; 
-    font-weight: bold;
-} 
+    font-weight: bold;}
 
-#divErrosCriacaoTaca{
-    clear: left;
-    float: center; 
-    display: none; 
-    color: red; 
-    font-weight: bold;
-}
-
-#divErrosCriacaoLiga{
-    clear: left;
-    float: center; 
-    display: none; 
-    color: red; 
-    font-weight: bold;
-}
-
-#divNaoExistemTacas{
-    clear: left;
-    float: center; 
-    display: none; 
-    color: red; 
-    font-weight: bold;
-}
-
-#divErrosTorneio{
-    clear: left;
-    float: center; 
-    display: none; 
-    color: red; 
-    font-weight: bold;
-}
-
-#divTabelaJogadores{
+#divTabelaJogadores, #divTabelaClubes, #divTabelaClubesTorneio, #divTabelaTacas, #divTabelaLigas, #divTabelaTorneio, #divTabelaMercadoJogadores, #divTabelaClubesCompletos {
     float: left; 
     display: none;
-    width: 100%;
-}
+    width: 100%;}
 
-#divTabelaClubes{
-    float: left; 
+
+#conteudoPaginaLiga, #conteudoPaginaTaca{
     display: none;
     width: 100%;
-}
-
-#divTabelaClubesTorneio{
-    float: left; 
-    display: none;
-    width: 100%;
-}
-
-
-#divTabelaEquipa{
-
-   display: none; 
-   float: right; 
-   width: 100%;
-}
-
-#divTabelaTacas{
-    float: left; 
-    display: none;
-    width: 100%;
-}
-
-#divTabelaLigas{
-    float: left; 
-    display: none;
-    width: 100%;
-}
-
-#divTabelaTorneio{
-    float: left;
-    display: none;
-    width: 100%;
-}
-
-#divTabelaMercadoJogadores{
-    float: left;
-     display: none;
-    width: 100%;
-}
-
-#divTabelaClubesCompletos{
-    float: left;
-     display: none;
-    width: 100%;
-}
-
-#divNaoExistemJogadores{
-    clear: left;
-    float: center; 
-    display: none; 
-    color:red; 
-    font-weight: bold;
-}
-
-#divNaoExistemClubes{ 
-   clear: left;
-   float: center; 
-    display: none; 
-    color: red; 
-    font-weight: bold;
-}
-
-#divNaoExistemTacas{ 
-   clear: left;
-   float: center; 
-    display: none; 
-    color: red; 
-    font-weight: bold;
-}
-
-#divNaoExistemLigas{ 
-   clear: left;
-   float: center; 
-    display: none; 
-    color: red; 
-    font-weight: bold;
-}
-
-#divTabelaMercadoJogadores{
-    float: left;
-    display: none;
-    width: 100%;
-}
-
-#divErrosEquipa{
-    float: center; 
-    display: none; 
-    color: red; 
-    font-weight: bold
-}
-
-#conteudoPaginaLiga{
-    display: none;
-    width: 100%;
-    float: center;
-}
-
-#conteudoPaginaTaca{
-    display: none;
-    width: 100%;
-    float: left;
-    }
-
+    float: center;}
 
 
 #divTorneio{
 display: none;
 width: 100%;
-float: left;
-    }
+float: left;}
 
-#formularioJogador{
-    float: left;
-    width: 100%;
-   
-}
-
-#formularioClube{
-    float: left;
-    width: 100%;
-}
-
-#formularioLiga{
-    float: left;
-    width: 100%;
-}
+#formularioJogador, #formularioClube, #formularioLiga, #formularioTaca{
+    float: center;
+    width: 100%;}
 
 td {
     border: 1px solid #dddddd;
     text-align: left;
-    padding: 8px;
-}
+    padding: 8px;}
 
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 90%;
     margin-top:3%;
-    margin-right:auto; 
-    margin-left:auto;
-}
-
-
+    margin-right:5%; 
+    margin-left:5%;}
 
 th {
     border: 1px solid #dddddd;
     text-align: center;
     padding: 8px;
-    background-color: #778899;
-}
+    background-color: #778899;}
 
 tr:nth-child(even) {
     background-color: #dddddd;}
+    
 
 tr:nth-child(odd) {
     background-color: #fff;}
@@ -390,15 +194,9 @@ button {
     font-size: 12px;
     margin: 4px 2px;
     cursor: pointer;
-    border-radius: 10px;
-}
+    border-radius: 10px;}
 
-#divTabelaTacas tr{cursor: pointer;}
-#divTabelaLigas tr{cursor: pointer;}
-#divTabelaClubes tr{cursor: pointer;}
-
-
-
+#divTabelaTacas tr, #divTabelaLigas tr, #divTabelaClubes tr{cursor: pointer;}
 
 
 @media only screen and (min-width: 150px) and (max-width: 600px){
@@ -410,61 +208,17 @@ button {
     
 
    ul #menus{
-   width: 100%;
-
-  
-    
-    }
+   width: 100%;}
 
     ul li{
         width: 100%;
-        margin: 0 auto;  
-       
-         }
+        margin: 0 auto;}
 
     form{
-
-        width: 100%;
-    }
+        width: 100%;}
     
-#conteudoPaginaJogador{
-    width: 90%;
-}
-
-
-#conteudoPaginaClube{
-    width: 90%;
-}
-
-
-#divEquipa{
-    width: 90%;
-}
-
-
-#divTabelaJogadores{
-    width: 90%;
-    
-}
-
-
-#divTabelaClubes{
-    width: 90%;
-}
-
-#formularioJogador{
-   width: 90%;}
-
-#formularioClube{
-   width: 90%;}
-
-#formularioTaca{
-   width: 90%;}
-
-#formularioLiga{
-   width: 90%;
-   float: center}
-
+#conteudoPaginaJogador, #conteudoPaginaClube, #divEquipa, #divTabelaJogadores, #divTabelaClubes, #formularioJogador, #formularioClube, #formularioTaca, #formularioLiga{
+    width: 90%;}
 }
 
 
