@@ -9,6 +9,7 @@ html, body {
     line-height: 1.5;
     height: 100%;
     width: 100%;
+    float: center;
     
 }
 
@@ -313,7 +314,7 @@ img{ cursor: pointer;}
 #conteudoPaginaLiga{
     display: none;
     width: 100%;
-    float: left;
+    float: center;
 }
 
 #conteudoPaginaTaca{
@@ -337,6 +338,11 @@ float: left;
 }
 
 #formularioClube{
+    float: left;
+    width: 100%;
+}
+
+#formularioLiga{
     float: left;
     width: 100%;
 }
@@ -448,7 +454,6 @@ button {
 
 #formularioJogador{
    width: 90%;}
-}
 
 #formularioClube{
    width: 90%;}
@@ -457,4 +462,9 @@ button {
    width: 90%;}
 
 #formularioLiga{
-   width: 90%;}
+   width: 90%;
+   float: center}
+
+}
+
+
