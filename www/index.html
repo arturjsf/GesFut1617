@@ -5,15 +5,13 @@
     <title>GesFut 1617</title>
     <meta charset="windows-1252">
     <meta http-equiv="content-type" content="text/html; charset=iso-8859-15" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
     <meta name="description" content="GesFut1617"/> 
     <link rel="stylesheet" type="text/css" href="styles/style.css">
     <link rel="shortcut icon" href="images/favicon.png"/>
 
-    
-    
 </head>
-<body class= "body" onload="onLoadDefaults();">
+<body class="body" onload="onLoadDefaults();">
 
     
 
@@ -26,7 +24,7 @@
         <nav id="menus">
             <ul>
                 <li><a href="#" onclick="loadConteudoHome();">Home</a></li>
-                <li><a href="#" onclick="loadConteudoJogador()">Jogadores</a>
+                <li><a href="#" onclick="loadConteudoJogador()">Jogadores</a></li>
                 <li><a href="#" onclick="loadConteudoClube()">Clubes</a></li>              
                 <li><a href="#" onclick="loadConteudoTaca()">Taça</a></li>
                 <li><a href="#" onclick="loadConteudoLiga()">Liga</a></li>
@@ -40,7 +38,7 @@
 
             <!--CONTEUDO HOME-->
             <div id="conteudoHome">
-                <h1>welcome</h1>
+                <h1>Sistema de Gestão de competições de Futebol</h1>
             </div>
 
            
@@ -135,19 +133,14 @@
                 <div id="divTabelaClubes">                      
                     <table id="tabelaClubes" border="1"></table>
                        <h5>(Clique num Clube para adicionar jogadores)</h5>
-
-                      
-                
-
                 </div>
 
-
-                
 
                 <!-- ERRO CLUBE -->
                 <div id="divNaoExistemClubes">Lista de Clubes vazia. Adiciona um Clube!</div>
 
 
+           
 
                  <!--CONTEUDO ADD JOGADOR AO CLUBE-->
                 
@@ -166,11 +159,11 @@
 
                    <!--TABELA DE JOGADORES POR EQUIPA-->
                    
-                    <div id="divTabelaEquipa">
-                        <h2>Equipa</h2>                         
+                    <div id="divTabelaEquipa"> 
+                         <h2>Equipa</h2>                         
                         <table id="tabelaEquipa" border="1"></table>                         
-                     </div>                      
-                                                            
+                     </div>    
+                                                                                          
                   </div>                           
 
             </div>
@@ -181,7 +174,6 @@
             <!--CONTEUDO TACA-->
             <div id="conteudoPaginaTaca">
                 <h2>Formulário Taça</h2>
-
 
                  <!--FORMULARIO TACA-->
                 <div id="formularioTaca">
@@ -200,7 +192,7 @@
                     </form>
 
                     <!-- ERRO TACA -->
-                    <div id="divErrosCriacaoTaca" style="float: left; display: none; color: red; font-weight: bold;"></div>
+                    <div id="divErrosCriacaoTaca"></div>
                 </div>
 
             
@@ -220,16 +212,28 @@
 
 
                 
-                 <!--CONTEUDO TORNEIO-->
-                
+                 <!--CONTEUDO ADD CLUBE AO TORNEIO-->          
                   <div id="divTorneio">
-                    <h2>Torneio</h2>
+                    <h2>Adicionar Clubes ao Torneio</h2>
+
+                    <!--TABELA CLUBES COMPLETOS A ADICIONAR -->
+                    <div id="divTabelaClubesCompletos">                      
+                        <table id="tabelaClubesCompletos" border="1"></table>                                            
+                    </div>
+
+
+                    <!-- ERRO -->
+                    <div id="divErrosTorneio">
+                            Não existem equipas completas suficientes!</div> 
 
                     <!--TABELA TORNEIO-->
-                    <div id="divTabelaTorneio">                      
-                        <table id="tabelaTorneio" border="1"></table>                                            
-                    </div>                       
-                                                            
+                    <div id="divTabelaClubesTorneio">
+                        <h2>Torneio</h2>                      
+                        <table id="tabelaClubesTorneio" border="1"></table> 
+                        <button type="submit" id="btnComecarTorneio" onclick="comecarTorneio()">Começar Torneio</button>                                         
+                    </div>
+
+                                                                                                    
                   </div>    
             </div>
 
@@ -238,7 +242,44 @@
 
             <!--CONTEUDO LIGA-->
             <div id="conteudoPaginaLiga">
-                <h1>Liga</h1>
+                
+                 <h2>Formulário Liga</h2>
+
+                 <!--FORMULARIO LIGA-->
+                <div id="formularioLiga">
+
+                    <form name="formLiga">
+                        <label for="nomeLiga">Nome Liga</label>
+                        <input required type="text" id="nomeLiga" name="nomeLiga" placeholder="Digite o nome da Liga">
+
+                        <label for="edicaoLiga">Edição</label>
+                        <input required type="number" id="edicaoLiga" name="edicaoLiga" placeholder="Insira a edição">
+
+                        <label for="numeroClubesLiga">Numero de Clubes</label>
+                        <input required type="number" id="numeroClubesLiga" name="numeroClubesLiga" placeholder="Numero de clubes">
+
+                        <button type="submit" id="btnGravarLiga" onclick="adicionarLiga()">GRAVAR</button>
+                    </form>
+
+                    <!-- ERRO LIGA -->
+                    <div id="divErrosCriacaoLiga"></div>
+                </div>
+
+            
+
+                <!--TABELA LIGA-->
+                <div id="divTabelaLigas">                      
+                    <table id="tabelaLigas" border="1"></table>   
+
+                    <h5>(Clique numa liga para comecar o campeonato)</h5>             
+                </div>
+
+
+                <!-- ERRO LIGA -->
+                <div id="divNaoExistemLigas">
+                    Lista de Ligas vazia. Adiciona uma Liga!
+                </div>
+
             </div>
 
 	    </div>
@@ -248,7 +289,6 @@
 
     <!--Rodapé da pagina-->
 	<footer class="mainFooter">
-
 
 		<address> 
 			Copyright &copy; Artur Ferreira- <a href="mailto:arturjsf@outlook.pt" title="mail to:" target="_blank">arturjsf@outlook.pt</a>,
@@ -264,7 +304,6 @@
       <script type="text/javascript">gerarDropDownPaisesJogador()</script>
       <script type="text/javascript">gerarDropDownPaisesClube()</script>
       <script type="text/javascript">gerarDropDownPosicao()</script>
-     <!-- <script type="text/javascript">gerarDropDownMercadoJogadoresLivres()</script>-->
 
 </body>
 

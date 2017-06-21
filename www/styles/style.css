@@ -387,10 +387,10 @@ button {
     border-radius: 10px;
 }
 
-
 #divTabelaTacas tr{cursor: pointer;}
-
+#divTabelaLigas tr{cursor: pointer;}
 #divTabelaClubes tr{cursor: pointer;}
+
 
 
 
