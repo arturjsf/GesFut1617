@@ -2291,6 +2291,7 @@ function jogadoresDefault(){
                                     new Jogador("Álex Grimaldo", "1995-09-20", "Espanha", "170", "DF"),
                                     new Jogador("Victor Lindelöf", "1994-07-17", "Suecia", "187", "DF"),
                                     new Jogador("Luisão", "1981-02-13", "Brasil", "193", "DF"),
+                                    new Jogador("Nelson Semedo", "1986-02-13", "Portugal", "176", "DF"),
                                     new Jogador("Ljubomir Fejsa", "1988-08-14", "Grecia", "174", "MC"),
                                     new Jogador("Pizzi", "1989-10-06", "Portugal", "176", "MC"),
                                     new Jogador("André Horta", "1996-11-07", "Portugal", "174", "MC"),
