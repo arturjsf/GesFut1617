@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">   
     <meta name="description" content="GesFut1617"/> 
     <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <script type="text/javascript" src="scripts/script.js"></script>
     <link rel="shortcut icon" href="images/favicon.png"/>
 
 </head>
@@ -70,10 +71,12 @@
                         </select>
 
                         <button type="submit" id="btnGravarJogador" onclick="adicionarJogador()">GRAVAR</button>
+                         <script type="text/javascript">gerarDropDownPaisesJogador()</script>
+                         <script type="text/javascript">gerarDropDownPosicao()</script>
                     </form>
 
                     <!-- ERRO JOGADOR -->
-                    <div id="divErro"></div>
+                    <div class="divErro" id="divErrosCriacaoJogador"></div>
                 </div>
 
                 
@@ -121,11 +124,12 @@
                         <input id="descricao" name="descricao">
 
                         <button type="submit" id="btnGravarClube" onclick="adicionarClube();">GRAVAR</button>
+                        <script type="text/javascript">gerarDropDownPaisesClube()</script>
                     </form>
 
                     
                     <!-- ERRO CLUBE -->
-                    <div id="divErro"></div>
+                    <div id="divErrosCriacaoClube"></div>
                 </div>
 
 
@@ -154,7 +158,7 @@
 
                      
                     <!-- ERRO JOGADOR/EQUIPA -->
-                        <div id="divErro"></div>
+                        <div id="divErrosEquipa" style="float: left; display: none; color: red; font-weight: bold;"></div>
 
 
                    <!--TABELA DE JOGADORES POR EQUIPA-->
@@ -192,7 +196,7 @@
                     </form>
 
                     <!-- ERRO TACA -->
-                    <div id="divErro"></div>
+                    <div id="divErrosCriacaoTaca"></div>
                 </div>
 
             
@@ -223,18 +227,29 @@
 
 
                     <!-- ERRO -->
-                    <div id="divErro">
+                    <div id="divErrosTorneio">
                             Não existem equipas completas suficientes!</div> 
 
                     <!--TABELA TORNEIO-->
                     <div id="divTabelaClubesTorneio">
                         <h2>Torneio</h2>                      
-                        <table id="tabelaClubesTorneio" border="1"></table> 
-                        <button type="submit" id="btnComecarTorneio" onclick="comecarTorneio()">Começar Torneio</button>                                         
+                        <table id="tabelaClubesTorneio" border="1"></table>                                         
+                    </div>
+                                                                                                    
+                  </div>
+
+
+
+                  <!-- CONTEUDO GERAR ELIMINATORIAS-->
+                    <div id="divEliminatorias">
+                        <h2>Eliminatórias</h2> 
+
                     </div>
 
-                                                                                                    
-                  </div>    
+
+
+
+
             </div>
 
 
@@ -258,11 +273,11 @@
                         <label for="numeroClubesLiga">Numero de Clubes</label>
                         <input required type="number" id="numeroClubesLiga" name="numeroClubesLiga" placeholder="Numero de clubes">
 
-                        <button type="submit" id="btnGravarLiga" onclick="adicionarLiga()">GRAVAR</button>
+                        <button type="submit" id="btnGravarLiga" onclick="Ligas.adicionarLiga()">GRAVAR</button>
                     </form>
 
                     <!-- ERRO LIGA -->
-                    <div id="divErro"></div>
+                    <div id="divErrosCriacaoLiga"></div>
                 </div>
 
             
@@ -298,13 +313,7 @@
             
 		</address>
 	</footer>
-
- 
-      <script type="text/javascript" src="scripts/script.js"></script>
-      <script type="text/javascript">gerarDropDownPaisesJogador()</script>
-      <script type="text/javascript">gerarDropDownPaisesClube()</script>
-      <script type="text/javascript">gerarDropDownPosicao()</script>
-
+    
 </body>
 
 </html>

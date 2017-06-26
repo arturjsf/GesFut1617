@@ -134,7 +134,9 @@ img{ cursor: pointer;}
     color: red; 
     font-weight: bold;}
 
-#divTabelaJogadores, #divTabelaClubes, #divTabelaClubesTorneio, #divTabelaTacas, #divTabelaLigas, #divTabelaTorneio, #divTabelaMercadoJogadores, #divTabelaClubesCompletos {
+#divTabelaJogadores, #divTabelaClubes, #divTabelaClubesTorneio, 
+#divTabelaTacas, #divTabelaLigas, #divTabelaTorneio, 
+#divTabelaMercadoJogadores, #divTabelaClubesCompletos {
     float: left; 
     display: none;
     width: 100%;}
