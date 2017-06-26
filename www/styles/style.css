@@ -99,14 +99,13 @@ input, textarea, select{
     margin-bottom: 10px;
     padding: 7px;
     box-sizing: border-box;
-    border: none;
-    border-radius: 20px;}
+    border: none;}
 
 tr{transition:all .25s ease-in-out;}
 
 img{ cursor: pointer;}
 
-#conteudoPaginaJogador, #conteudoPaginaClube{
+.contPagina{
     display: none;
     width: 100%;
     float: left;}
@@ -119,7 +118,7 @@ img{ cursor: pointer;}
     display: none;}
 
 
-#divErro{
+.divErro{
      clear: left;
     float: center; 
     display: none; 
@@ -127,33 +126,20 @@ img{ cursor: pointer;}
     font-weight: bold;
     width: 100%;}
 
-#divNaoExistemTacas, #divNaoExistemLigas, #divNaoExistemJogadores, #divNaoExistemClubes{
-    clear: left;
-    float: center; 
-    display: none; 
-    color: red; 
-    font-weight: bold;}
 
-#divTabelaJogadores, #divTabelaClubes, #divTabelaClubesTorneio, 
-#divTabelaTacas, #divTabelaLigas, #divTabelaTorneio, 
-#divTabelaMercadoJogadores, #divTabelaClubesCompletos {
+.divTabela{
     float: left; 
     display: none;
     width: 100%;}
 
 
-#conteudoPaginaLiga, #conteudoPaginaTaca{
+.contPagina{
     display: none;
     width: 100%;
     float: center;}
 
 
-#divTorneio{
-display: none;
-width: 100%;
-float: left;}
-
-#formularioJogador, #formularioClube, #formularioLiga, #formularioTaca{
+.formulario{
     float: center;
     width: 100%;}
 
@@ -219,7 +205,8 @@ button {
     form{
         width: 100%;}
     
-#conteudoPaginaJogador, #conteudoPaginaClube, #divEquipa, #divTabelaJogadores, #divTabelaClubes, #formularioJogador, #formularioClube, #formularioTaca, #formularioLiga{
+#divEquipa, #divTorneio
+.divTabela, .formulario, .contPagina{
     width: 90%;}
 }
 
